@@ -1,0 +1,218 @@
+<!--
+  ~ /**
+  ~  Copyright (c) 2026 Wilson K Sam
+  ~
+  ~  SPDX-License-Identifier: MIT
+  ~
+  ~  */
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Q&A Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.5; }
+        h1 { text-align:center; }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+        .meta { font-size: 12px; color: #555; margin-bottom: 8px; }
+        .question { font-weight: bold; font-size: 16px; }
+        .answer, .explanation { margin-top: 8px; }
+        .badge {
+            display:inline-block;
+            padding:2px 8px;
+            border:1px solid #888;
+            border-radius:12px;
+            font-size:12px;
+        }
+        @media print {
+            button { display:none; }
+            body { margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+<h1>Chapter 5 : User-defined Methods</h1>
+<button onclick="window.print()">Print</button>
+
+<p>Paste your JSON array into the <code>data</code> variable below.</p>
+
+<div id="content"></div>
+
+<script>
+    const data = [
+        {
+            "id": 1,
+            "difficulty":  "easy",
+            "question": "Write two advantages of using methods in programming.",
+            "answer": "1) Code Reusability: Methods allow you to write a block of code once and reuse it multiple times throughout your program. This promotes code efficiency and reduces redundancy, as you can call the same method whenever you need to perform the same task, rather than writing the same code multiple times. 2) Improved Readability and Maintainability: Methods help to break down complex problems into smaller, more manageable pieces. This makes the code easier to read and understand, as each method can be designed to perform a specific task. Additionally, if you need to make changes to a particular functionality, you can simply modify the relevant method without affecting the rest of the code, which enhances maintainability and reduces the likelihood of introducing bugs when making changes.",
+            "explanation": "Using methods in programming offers several advantages. Code reusability allows developers to write a piece of code once and use it multiple times, which can save time and effort. For example, if you have a method that calculates the area of a circle, you can call that method whenever you need to calculate the area of a circle, rather than writing the same code each time. Improved readability and maintainability are also significant benefits of using methods. By breaking down a program into smaller methods, you can make the code more organized and easier to understand. Each method can be designed to perform a specific task, which can help other developers (or your future self) to quickly grasp the purpose of each method and how it fits into the overall program. Additionally, if you need to make changes to a specific functionality, you can modify the relevant method without affecting the rest of the code, which can help to prevent bugs and make the code easier to maintain over time."
+        },
+        {
+            "id": 2,
+            "difficulty":  "medium",
+            "question": "Differentiate between pass by value and pass by reference in Java.",
+            "answer": "In Java, pass by value means that when a method is called, a copy of the variable's value is passed to the method. This means that any changes made to the parameter within the method do not affect the original variable outside the method. For example, if you pass a primitive data type (like int or double) to a method, the method receives a copy of the value, and changes to that parameter will not affect the original variable. Pass by reference, on the other hand, means that when a method is called, a reference to the original variable is passed to the method. This allows the method to modify the original variable directly. However, in Java, all method arguments are passed by value, but when an object is passed, the value that is passed is the reference to the object. This means that when an object is passed to a method, a copy of the reference is created and passed to the method. As a result, any changes made to the object's state within the method will affect the original object outside the method, since both the original reference and the copy of the reference point to the same object in memory. However, if you try to reassign the reference itself within the method (e.g., pointing it to a new object), it will not affect the original reference outside the method.",
+            "explanation": "In Java, primitive data types are passed by value, which means that a copy of the value is created and passed to the method. This allows the method to work with the value without affecting the original variable outside the method. For example, if you pass an integer variable to a method and modify it within the method, the original integer variable outside the method will remain unchanged. On the other hand, when you pass an object to a method, you are passing a reference to that object. This means that the method can modify the state of the object, and those changes will be reflected outside the method since both the original reference and the copy of the reference point to the same object in memory. However, if you try to reassign the reference itself within the method (e.g., pointing it to a new object), it will not affect the original reference outside the method, as you are only modifying the copy of the reference within the method."
+        },
+        {
+            "id": 3,
+            "difficulty":  "hard",
+            "question": "Why main() method can be defined only once in a Java program?",
+            "answer": "The main() method can be defined only once in a Java program because it serves as the entry point for the program. When a Java application is executed, the Java Virtual Machine (JVM) looks for the main() method to start the execution of the program. If there were multiple main() methods defined in the program, the JVM would not know which one to execute, leading to ambiguity and potential errors. The main() method must be unique to ensure that there is a clear and unambiguous starting point for the program's execution. Additionally, the main() method has a specific signature (public static void main(String[] args)) that the JVM recognizes, and having multiple main() methods with the same signature would violate this requirement and cause a compile-time error.",
+            "explanation": "In Java, the main() method is the designated entry point for the program. It is where the execution of the program begins. The JVM looks for the main() method with the specific signature (public static void main(String[] args)) to start the program. If there were multiple main() methods defined in the program, it would create confusion for the JVM as to which main() method to execute. This would lead to ambiguity and potential errors during runtime. To avoid this issue, Java enforces the rule that there can only be one main() method in a Java program. This ensures that there is a clear and unambiguous starting point for the program's execution, allowing the JVM to correctly identify and execute the main() method when the program is run."
+        },
+        {
+            "id": 4,
+            "difficulty":  "medium",
+            "question": "What is the purpose of the 'this' keyword in Java?",
+            "answer": "The 'this' keyword in Java is a reference variable that refers to the current object. It is used to differentiate between instance variables and local variables when they have the same name. It can also be used to call other constructors within the same class or to pass the current object as an argument to another method. The 'this' keyword helps to clarify code and avoid ambiguity when accessing instance variables or methods.",
+            "explanation": "In Java, the 'this' keyword is commonly used in constructors and methods to refer to the current instance of the class. For example, if you have a class with an instance variable named 'name' and a constructor that takes a parameter also named 'name', you can use 'this.name' to refer to the instance variable and 'name' to refer to the parameter. This helps to avoid confusion and ensures that you are accessing the correct variable. Additionally, 'this' can be used to call another constructor in the same class using 'this()' syntax, allowing for constructor chaining."
+        },
+        {
+            "id": 5,
+            "difficulty":  "easy",
+            "question": "What happens when a method is passed by reference in Java?",
+            "answer": "In Java, when a method is passed by reference, it means that the method receives a reference to the original object rather than a copy of it. This allows the method to modify the original object directly. However, it's important to note that Java does not support true pass-by-reference for primitive types; instead, it uses pass-by-value for primitives. For objects, the reference to the object is passed by value, meaning that the method can modify the object's state but cannot change the reference itself to point to a different object.",
+            "explanation": "In Java, all method arguments are passed by value. However, when you pass an object to a method, you are passing the reference to that object by value. This means that the method receives a copy of the reference, which still points to the same object in memory. As a result, any changes made to the object's state within the method will affect the original object outside the method. However, if you try to reassign the reference itself within the method (e.g., pointing it to a new object), it will not affect the original reference outside the method."
+        },
+        {
+            "id": 6,
+            "difficulty":  "hard",
+            "question": "Differentiate between static and instance methods in Java.",
+            "answer": "Static methods in Java belong to the class and can be called without creating an instance of the class. They are defined using the 'static' keyword and can only access static variables and other static methods. Instance methods, on the other hand, belong to an instance of the class and require an object to be created in order to be called. They can access both instance variables and static variables, as well as other instance methods and static methods. The main difference is that static methods are associated with the class itself, while instance methods are associated with individual objects of the class.",
+            "explanation": "Static methods are often used for utility or helper methods that do not require any instance-specific data. For example, the 'Math' class in Java has static methods like 'sqrt' and 'pow' that can be called without creating an instance of the 'Math' class. Instance methods, on the other hand, are used when you need to perform operations that depend on the state of a specific object. For example, if you have a 'Car' class with an instance method 'startEngine', you would need to create an instance of the 'Car' class and call 'startEngine' on that instance to start the engine of that specific car."
+        },
+        {
+            "id": 7,
+            "difficulty":  "medium",
+            "question": "What is the purpose of the 'return' statement in a method?",
+            "answer": "The 'return' statement in a method is used to exit the method and optionally return a value to the caller. It allows the method to provide a result back to the code that invoked it. If the method has a return type other than void, the 'return' statement must be followed by an expression that evaluates to a value of the specified return type. If the method has a void return type, the 'return' statement can be used without an expression to simply exit the method. The 'return' statement is essential for methods that need to produce a result or for controlling the flow of execution within a method.",
+            "explanation": "In Java, the 'return' statement is used to send a value back to the caller of the method. For example, if you have a method that calculates the sum of two numbers, you would use a 'return' statement to return the result of the calculation. If the method is defined with a return type of 'int', you would return an integer value. If the method is defined with a return type of 'void', you would simply use 'return;' to exit the method without returning any value. The 'return' statement is crucial for methods that need to provide feedback or results to the code that called them, allowing for more dynamic and interactive programming."
+        },
+        {
+            "id": 8,
+            "difficulty":  "easy",
+            "question": "Can a method in Java have multiple return statements?",
+            "answer": "Yes, a method in Java can have multiple return statements. However, only one of the return statements will be executed during a single invocation of the method, depending on the flow of control. Multiple return statements can be used to handle different conditions or to exit the method early based on certain criteria. It is important to ensure that all possible paths through the method lead to a return statement if the method has a non-void return type.",
+            "explanation": "Having multiple return statements in a method can improve readability and make it easier to understand the logic of the method. For example, you might have a method that checks for various conditions and returns different values based on those conditions. This can help to avoid deep nesting of if-else statements and make the code more straightforward. However, it is important to use multiple return statements judiciously, as excessive use can sometimes lead to confusion or make it harder to follow the flow of the method."
+        },
+        {
+            "id": 9,
+            "difficulty":  "medium",
+            "question": "Differentiate between pure and impure methods.",
+            "answer": "Pure methods are methods that always produce the same output for the same input and have no side effects. They do not modify any state or interact with external systems, such as databases or file systems. Pure methods are deterministic and can be easily tested and reasoned about. Impure methods, on the other hand, may produce different outputs for the same input or have side effects. They may modify state, interact with external systems, or rely on external factors that can change over time. Impure methods can be more difficult to test and reason about due to their potential for side effects and non-deterministic behavior.",
+            "explanation": "Pure methods are often used in functional programming paradigms, where immutability and statelessness are emphasized. They can be easily tested and can be safely used in concurrent programming without worrying about race conditions or shared state. Impure methods, while sometimes necessary for certain tasks, can introduce complexity and make it harder to maintain and debug code. It is generally recommended to minimize the use of impure methods and to clearly document any side effects they may have to ensure that other developers understand the potential implications of using those methods."
+        },
+        {
+            "id": 10,
+            "difficulty":  "hard",
+            "question": "What is mean by function overloading? In what way it is advantageous?",
+            "answer": "Function overloading is a feature in programming languages that allows multiple functions to have the same name but different parameters (either in number, type, or both). It enables developers to create multiple versions of a function that can handle different types of input or different numbers of arguments, while still maintaining a consistent function name. The advantage of function overloading is that it improves code readability and usability by allowing developers to use the same function name for related operations, rather than having to create different function names for each variation. It also allows for more flexible and intuitive code, as developers can call the same function with different arguments without having to worry about the specific implementation details of each variation.",
+            "explanation": "Function overloading can enhance the clarity of code by allowing developers to use a single function name for related operations. For example, you might have a function named 'print' that can accept different types of arguments, such as strings, integers, or floating-point numbers. By overloading the 'print' function, you can provide different implementations for each type of argument while still using the same function name. This can make the code more intuitive and easier to read, as developers can simply call 'print' with the appropriate arguments without needing to remember different function names for each variation."
+        },
+        {
+            "id": 11,
+            "difficulty":  "medium",
+            "question": "Define Return type of a method. What is the significance of return type in method declaration?",
+            "answer": "The return type of a method is the data type of the value that the method is expected to return after execution. It is specified in the method declaration and indicates what type of value the method will produce when it is called. The significance of the return type in method declaration is that it allows the compiler to enforce type safety and ensures that the method returns a value of the expected type. It also helps developers understand what kind of data they can expect to receive when calling the method, which can improve code readability and maintainability. If a method is declared with a return type of 'void', it indicates that the method does not return any value.",
+            "explanation": "The return type is an essential part of a method declaration as it defines the contract between the method and the code that calls it. It allows the caller to know what type of data to expect as a result of the method execution. For example, if a method is declared to return an 'integer', the caller can anticipate that it will receive an integer value when the method is called. This helps to prevent errors and ensures that the code is consistent with the expected data types. Additionally, the return type can be used by the compiler to perform type checking and to optimize the code during compilation, which can lead to improved performance."
+        },
+        {
+            "id": 12,
+            "difficulty":  "easy",
+            "question": "Define method signature. What are the components of a method signature in Java?",
+            "answer": "A method signature in Java is a unique identifier for a method that consists of the method's name and its parameter list (the number, type, and order of parameters). The method signature does not include the return type or any exceptions that the method may throw. The components of a method signature in Java include: 1) Method Name: The name of the method that identifies it. 2) Parameter List: The list of parameters that the method accepts, including their types and order. For example, a method signature for a method named 'calculateSum' that takes two integer parameters would be 'calculateSum(int a, int b)'. The method signature is used by the Java compiler to differentiate between methods, especially in cases of method overloading, where multiple methods have the same name but different parameter lists.",
+            "explanation": "The method signature is crucial for the Java compiler to determine which method to call when a method is invoked. In cases of method overloading, where multiple methods have the same name but different parameter lists, the method signature allows the compiler to identify the correct method based on the arguments provided in the method call. For example, if you have two methods named 'calculateSum', one that takes two integers and another that takes three integers, the method signature will help the compiler determine which method to execute based on the number and type of arguments passed in the method call. This is an important aspect of Java's method overloading feature, which allows developers to create multiple methods with the same name but different functionalities based on the parameters they accept."
+        },
+        {
+            "id": 13,
+            "difficulty":  "medium",
+            "question": "Differentiate between formal parameters and actual parameters in Java.",
+            "answer": "Formal parameters are the variables that are defined in the method declaration and are used to receive values when the method is called. They act as placeholders for the values that will be passed to the method. Actual parameters, on the other hand, are the values or arguments that are passed to the method when it is invoked. They are the real values that are assigned to the formal parameters during the method call. The main difference between formal parameters and actual parameters is that formal parameters are defined in the method declaration and are used to receive values, while actual parameters are the values that are passed to the method during the method call.",
+            "explanation": "In Java, when you define a method, you specify formal parameters in the method declaration. For example, if you have a method named 'calculateSum' that takes two integers as parameters, the formal parameters would be defined as 'int a' and 'int b'. When you call this method, you would pass actual parameters, such as 'calculateSum(5, 10)', where '5' and '10' are the actual parameters. The formal parameters 'a' and 'b' will receive the values of '5' and '10' respectively during the execution of the method. This distinction is important for understanding how data is passed to methods and how methods can operate on that data. Formal parameters provide a way to define the expected input for a method, while actual parameters provide the specific values that will be used when the method is called."
+        },
+        {
+            "id": 14,
+            "difficulty":  "hard",
+            "question": "What is the purpose of the 'void' return type in Java?",
+            "answer": "The 'void' return type in Java indicates that a method does not return any value. It is used when a method performs an action or a series of actions but does not need to provide any information back to the caller. Methods with a 'void' return type are typically used for operations that have side effects, such as modifying the state of an object, printing output to the console, or performing calculations without needing to return a result. The 'void' return type allows developers to create methods that focus on performing tasks rather than producing values.",
+            "explanation": "In Java, when you declare a method with a 'void' return type, it means that the method is intended to perform some operation without returning any data. For example, you might have a method named 'printMessage' that takes a string parameter and prints it to the console. This method would be declared with a 'void' return type because it does not need to return any value; its purpose is simply to perform an action (printing the message). Using 'void' helps to clarify the intent of the method and indicates to other developers that they should not expect any return value when calling this method."
+        },
+        {
+            "id": 15,
+            "difficulty":  "medium",
+            "question": "Can a method in Java have no parameters? If yes, provide an example.",
+            "answer": "Yes, a method in Java can have no parameters. Such methods are often used to perform actions that do not require any input from the caller. For example, a method that prints a welcome message to the console can be defined without any parameters. Here is an example: \n\npublic void printWelcomeMessage() {\n    System.out.println(\"Welcome to Java programming!\");\n}\n\nIn this example, the 'printWelcomeMessage' method does not take any parameters and simply prints a welcome message when called.",
+            "explanation": "Methods without parameters can be useful for performing tasks that do not require any specific input. They can be called directly without needing to provide any arguments, making them convenient for actions that are self-contained or that rely on internal state rather than external input. In the example provided, the 'printWelcomeMessage' method is designed to display a message to the user, and since it does not need any information from the caller, it does not require any parameters."
+        },
+        {
+            "id": 16,
+            "difficulty":  "hard",
+            "question": "Which OOP concept is used to achieve method overloading in Java?",
+            "answer": "The OOP concept used to achieve method overloading in Java is called polymorphism. Polymorphism allows methods to have the same name but different parameter lists, enabling the ability to perform different tasks based on the input parameters. Method overloading is a form of compile-time polymorphism, where the method to be executed is determined at compile time based on the number and type of parameters passed to the method. This allows developers to create multiple methods with the same name but different functionalities, improving code readability and usability.",
+            "explanation": "Polymorphism is a fundamental concept in object-oriented programming that allows objects to be treated as instances of their parent class rather than their actual class. In the context of method overloading, polymorphism enables the ability to define multiple methods with the same name but different parameter lists within the same class. The Java compiler uses the method signature (method name and parameter list) to determine which method to call when a method is invoked. This allows for greater flexibility and code reuse, as developers can create methods that perform similar tasks but with different input parameters without needing to come up with unique method names for each variation."
+        },
+        {
+            "id": 17,
+            "difficulty":  "medium",
+            "question": "If a method is declared with a return type of 'int', what will happen if the method does not include a return statement?",
+            "answer": "If a method is declared with a return type of 'int' but does not include a return statement, the Java compiler will generate a compile-time error. This is because the method is expected to return an integer value, and without a return statement, it does not fulfill this requirement. The compiler will indicate that the method must return a value of type 'int' and will not allow the code to compile until a return statement is added that returns an integer value. This is a fundamental aspect of Java's type system, which enforces that methods with a specified return type must return a value of that type.",
+            "explanation": "In Java, every method that is declared with a non-void return type must include a return statement that returns a value of the specified type. If a method is declared to return 'int' but does not include a return statement, the compiler will not be able to determine what value to return when the method is called, leading to a compile-time error. This is because the method's contract specifies that it must return an integer value, and without a return statement, it fails to meet this contract. To fix this error, you would need to add a return statement that returns an integer value, such as 'return 0;' or 'return someIntegerVariable;'."
+        },
+        {
+            "id": 18,
+            "difficulty":  "easy",
+            "question": "If a method contains several return statements, which one will be executed when the method is called?",
+            "answer": "When a method contains several return statements, the first return statement that is reached during the execution of the method will be executed, and the method will exit immediately after that return statement is executed. The subsequent return statements will not be executed, as the method will have already returned a value and exited. The flow of control in the method will determine which return statement is executed, and it will depend on the conditions and logic within the method. For example, if there are multiple return statements within different branches of an if-else statement, the return statement that corresponds to the branch that is executed will be the one that is executed when the method is called.",
+            "explanation": "In Java, when a return statement is executed, the method immediately exits and returns the specified value (if any) to the caller. This means that if there are multiple return statements in a method, only the first one that is reached during execution will be executed. The flow of control in the method will determine which return statement is executed. For example, if you have an if-else  structure with return statements in both branches, the return statement that corresponds to the branch that is executed will be the one that is executed when the method is called. It is important to ensure that all possible paths through the method lead to a return statement if the method has a non-void return type, to avoid compile-time errors and ensure that the method behaves as expected."
+        },
+        {
+            "id": 19,
+            "difficulty":  "medium",
+            "question": "How are the following data passed to a method in Java: 1) Primitive data types, 2) Objects?",
+            "answer": "In Java, the way data is passed to a method depends on whether it is a primitive data type or an object. 1) Primitive data types (such as int, double, char, etc.) are passed by value. This means that when a primitive data type is passed to a method, a copy of the value is created and passed to the method. Any changes made to the parameter within the method do not affect the original value outside the method. 2) Objects are passed by reference. However, it is important to note that in Java, all method arguments are passed by value, but when an object is passed, the value that is passed is the reference to the object. This means that when an object is passed to a method, a copy of the reference is created and passed to the method. As a result, any changes made to the object's state within the method will affect the original object outside the method, since both the original reference and the copy of the reference point to the same object in memory. However, if you try to reassign the reference itself within the method (e.g., pointing it to a new object), it will not affect the original reference outside the method.",
+            "explanation": "In Java, primitive data types are passed by value, which means that a copy of the value is created and passed to the method. This allows the method to work with the value without affecting the original variable outside the method. For example, if you pass an integer variable to a method and modify it within the method, the original integer variable outside the method will remain unchanged. On the other hand, when you pass an object to a method, you are passing a reference to that object. This means that the method can modify the state of the object, and those changes will be reflected outside the method since both the original reference and the copy of the reference point to the same object in memory. However, if you try to reassign the reference itself within the method (e.g., pointing it to a new object), it will not affect the original reference outside the method, as you are only modifying the copy of the reference within the method."
+        },
+        {
+            "id": 20,
+            "difficulty":  "hard",
+            "question": "Define: Access Specifiers. What are the different access specifiers in Java and their significance?",
+            "answer": "Access specifiers in Java are keywords that determine the visibility and accessibility of classes, methods, and variables. They control which parts of the code can access certain members of a class. The different access specifiers in Java are: 1) Public: Members declared as public are accessible from any other class in the same package or different packages. 2) Private: Members declared as private are only accessible within the same class. They cannot be accessed from outside the class, even by subclasses. 3) Protected: Members declared as protected are accessible within the same package and also by subclasses in different packages. 4) Default (Package-Private): If no access specifier is specified, the member is considered to have default access, which means it is accessible only within the same package. The significance of access specifiers is that they help to encapsulate and protect the internal state of an object, allowing developers to control how the members of a class can be accessed and modified. This promotes better code organization, maintainability, and security by preventing unauthorized access to sensitive data and ensuring that the internal implementation of a class is hidden from external code.",
+            "explanation": "Access specifiers are an important aspect of object-oriented programming in Java, as they allow developers to define the level of access that other classes have to the members of a class. By using access specifiers, developers can enforce encapsulation and information hiding, which are key principles of OOP. For example, by declaring a variable as private, you can prevent other classes from directly accessing or modifying that variable, ensuring that it can only be accessed through controlled methods (getters and setters). This helps to maintain the integrity of the data and allows for better control over how the class's members are used and modified."
+        }
+
+
+
+
+
+    ]; // Paste your JSON array here
+
+    const container = document.getElementById("content");
+
+    data.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+    <div class="meta">
+      ID: ${item.id || ""} |
+      <span class="badge">${item.difficulty || ""}</span>
+    </div>
+    <div class="question">Q. ${item.question || ""}</div>
+    <div class="answer"><strong>Answer:</strong><br>${item.answer || ""}</div>
+    <div class="explanation"><strong>Explanation:</strong><br>${item.explanation || ""}</div>
+  `;
+        container.appendChild(div);
+    });
+</script>
+</body>
+</html>
