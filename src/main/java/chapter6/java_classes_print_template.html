@@ -1,0 +1,847 @@
+<!--
+  ~ /**
+  ~  Copyright (c) 2026 Wilson K Sam
+  ~
+  ~  SPDX-License-Identifier: MIT
+  ~
+  ~  Chapter : Chapter 6 - Class as the Basis of all Computations
+  ~  Purpose:
+  ~  Notes:
+  ~    -
+  ~  */
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Classes Documentation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.5;
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        .class-page {
+            page-break-after: always;
+            margin-bottom: 40px;
+        }
+
+        .metadata {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        pre {
+            border: 1px solid #ccc;
+            padding: 15px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin: 6px 0;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+<h1>Java Programs</h1>
+
+<div class="toc">
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+</div>
+
+<hr>
+
+<div id="content"></div>
+
+<script>
+    /*
+    Paste your classes here.
+
+    Example:
+
+    const classes = [
+    {
+      packageName: "com.company.service",
+      className: "CustomerService",
+      description: "Handles customer operations",
+      sourceCode: `
+    @Service
+    public class CustomerService {
+        public String hello() {
+            return "Hello";
+        }
+    }
+    `
+    }
+    ];
+    */
+
+    const classes = [
+        {
+            packageName: "java.lang",
+            className: "Array_Maxmin",
+            description: "Find Min and Max from an array of 10 numbers",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class Array_Maxmin {
+
+                    int m[] = new int[10];
+                    int max;
+                    int min;
+
+                    void input() {
+                        Scanner sc = new Scanner(System.in);
+                        System.out.println("Enter 10 Numbers:");
+                        for (int i = 0; i < 10; i++) {
+                            m[i] = sc.nextInt();
+                        }
+                        max = m[0];
+                        min = m[0];
+                    }
+
+                    void max() {
+                        for (int i = 0; i < 10; i++) {
+                            if (m[i] > max) {
+                                max = m[i];
+                            }
+                        }
+                    }
+                    void min() {
+                        for (int i = 0; i < 10; i++) {
+                            if (m[i] < min) {
+                                min = m[i];
+                            }
+                        }
+                    }
+
+                    void display() {
+                        System.out.println("Maximum number is: " + max);
+                        System.out.println("Minimum number is: " + min);
+                    }
+
+
+                    public static void main(String[] args) {
+                        Array_Maxmin obj = new Array_Maxmin();
+                        obj.input();
+                        obj.max();
+                        obj.min();
+                        obj.display();
+
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.String",
+            className: "RotateAStringVerticallyByK",
+            description: "Encode a String using a vertical rotation by K positions",
+            sourceCode: `
+                public class RotateAStringVerticallyByK {
+
+                    private static final int MAX_INDEX = 90;
+                    private static final int MIN_INDEX = 65;
+                    private static final int REEL_SIZE = 26;
+                    private String str;
+
+                    public void input() {
+                        Scanner sc = new Scanner(System.in);
+                        System.out.println("Enter a string: ");
+                        str = sc.nextLine();
+                    }
+
+                    public void rotateStringVertically(int move) {
+                        StringBuilder sb = new StringBuilder();
+                        move = move % REEL_SIZE; //To handle cases where k is greater than the reel size, we take the modulus with the reel size. This ensures that the rotation wraps around correctly and prevents unnecessary rotations.
+
+                        System.out.println("Starting to rotate string %s vertically by %s".formatted(str, move) );
+                        for (int i = 0; i <= str.length() - 1; i++) {
+                            int codePoint = str.codePointAt(i);
+                            int nextCodePoint = str.codePointAt(i) + move;
+                            if(codePoint + move > MAX_INDEX) {
+                                nextCodePoint = codePoint + move - REEL_SIZE;
+                            }
+                            if(codePoint + move < MIN_INDEX) {
+                                nextCodePoint = codePoint + move + REEL_SIZE;
+                            }
+                            sb.append((char) nextCodePoint);
+                        }
+                        str = sb.toString();
+                        System.out.println("The rotated string is: " + str);
+                    }
+
+
+                    public static void main(String[] args) {
+                        RotateAStringVerticallyByK obj = new RotateAStringVerticallyByK();
+                        obj.input();
+                        obj.rotateStringVertically(2);
+                        obj.rotateStringVertically(-2);
+                        obj.rotateStringVertically(-3);
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.String",
+            className: "CountWords",
+            description: "Count the number of words in a string and also count how many of those words start with an uppercase letter and how many start with a lowercase letter.",
+            sourceCode: `
+                public class CountWords {
+                    private String str;
+                    private int upperCount;
+                    private int lowerCount;
+
+                    void input(String input) {
+                        str = input;
+                        upperCount = 0;
+                        lowerCount = 0;
+                    }
+
+                    void countWords() {
+                        upperCount = 0;
+                        lowerCount = 0;
+
+                        if(str.isEmpty()) return;
+                        if(Character.isUpperCase(str.charAt(0)) ) {
+                            upperCount++;
+                        } else {
+                            lowerCount++;
+                        }
+                        for(int i = 0; i < str.length(); i++) {
+                            char ch = str.charAt(i);
+                            if(Character.isWhitespace(ch)) {
+                                if(Character.isUpperCase(str.charAt(i+ 1))) {
+                                    upperCount++;
+                                }
+                                if(Character.isLowerCase(str.charAt(i+ 1))) {
+                                    lowerCount++;
+                                }
+                            }
+                        }
+
+                        System.out.println("upper count is " + upperCount);
+                        System.out.println("lower count is " + lowerCount);
+                    }
+
+                    public static void main(String[] args) {
+                        CountWords countWords = new CountWords();
+                        countWords.input("Define a Word count Class in Java");
+                        countWords.countWords();
+                //        upper count is 4
+                //        lower count is 3
+                    }
+                }
+
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "Security",
+            description: "Calculate the wage of a security guard based on the number of hours worked and the hourly rate. The wage is calculated as follows: Upto 40 hours - 1 rupee per hour, next 20 hours - 1.5 rupee per hour, next 20 hours - 2 rupee per hour.",
+            sourceCode: `
+                public class Security {
+                    private String name; // To store the name of the security
+                    private int hour; //store number of hours
+                    private double rate; //to store the hourly rate
+                    private double wage; //to calculate wage
+
+                    void get(String name, int hour, double rate) {
+                        this.name = name;
+                        this.hour = hour;
+                        this.rate = rate;
+                    }
+
+                    void calwage() {
+                        /*
+                            Upto 40 hours - 1 rupee per hour
+                            next 20 hours - 1.5 rupee per hour
+                            next 20 hours - 2 rupee per hour
+                         */
+                        if (hour <= 40) wage = 40 * rate;
+                        if(hour > 40 && hour <= 60) {
+                            wage = (hour - 40) * 1.5 * rate + 40 * rate ;
+                        }
+                        if(hour > 60 ) {
+                            wage = ((hour - 60) * 2) + 20 * 1.5 * rate + 40 * rate ;
+                        }
+                    }
+                    void display() {
+                        System.out.println("Name: " + name);
+                        System.out.println("Hour: " + hour);
+                        System.out.println("Rate: " + rate);
+                        System.out.println("Wage: " + wage);
+                    }
+
+                    public static void main(String[] args) {
+                        Security security = new Security();
+                        security.get("Sher Khan", 65, 1);
+                        security.calwage();
+                        security.display();
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "Courier",
+            description: "Calculate the bill for a courier service based on the weight of the parcel and the type of delivery (domestic or international). The bill is calculated as follows: Upto 5 kg - 800 rupees per kg, next 5 kg - 700 rupees per kg, above 10 kg - 500 rupees per kg. For international delivery, an additional charge of 1500 rupees is added to the bill.",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class Courier {
+                    String name;
+                    double weight;
+                    String address;
+                    double bill;
+                    char type;
+
+                    void accept() {
+                        Scanner input = new Scanner(System.in);
+                        System.out.println("Enter customer name:");
+                        name = input.nextLine();
+                        System.out.println("Enter customer address:");
+                        address = input.nextLine();
+                        System.out.println("Enter weight:");
+                        weight = input.nextDouble();
+                        System.out.println("Enter parcel type 'D' or 'I'");
+                        type = input.next().charAt(0);
+                    }
+
+                    void calculate() {
+                        if(weight <= 5) {
+                            bill = weight * 800;
+                        } else if(weight <= 10) {
+                            double above5kg = weight - 5;
+                            bill = 5 * 800 + above5kg * 700;
+                        } else {
+                            double above10kg = weight - 10;
+                            bill = 5 * 800 + 5  * 700 + above10kg * 500;
+                        }
+
+                        if(type == 'I') {
+                            bill = bill + 1500;
+                        }
+                    }
+
+                    void print() {
+                        System.out.println("Customer Name: " + name);
+                        System.out.println("Customer Address: " + address);
+                        System.out.println("Parcel Weight: " + weight);
+                        System.out.println("Parcel Type: " + type);
+                        System.out.println("Bill Amount: " + bill);
+                    }
+
+
+                    public static void main(String[] args) {
+                        Courier courier = new Courier();
+                        courier.accept();
+                        courier.calculate();
+                        courier.print();
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "Rectangle",
+            description: "Calculate the area, perimeter and diagonal of a rectangle based on the length and breadth provided by the user.",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class Rectangle {
+                    int length;
+                    int breadth;
+                    int area;
+                    int perimeter;
+                    double diagonal;
+
+                    public void inputdata() {
+                        Scanner sc = new Scanner(System.in);
+                        System.out.println("Enter length of rectangle");
+                        length = sc.nextInt();
+                        System.out.println("Enter breadth of rectangle");
+                        breadth = sc.nextInt();
+                    }
+
+                    public void calculate() {
+                        area = length * breadth;
+                        perimeter = 2 * (length + breadth);
+                        diagonal = Math.sqrt(Math.pow(length, 2) + Math.pow(breadth, 2));
+                    }
+
+                    public void outputdata() {
+                        System.out.println("Area of rectangle: " + area);
+                        System.out.println("Perimeter of rectangle: " + perimeter);
+                        System.out.println("Diagonal of rectangle: " + diagonal);
+                    }
+
+                    public static void main(String[] args) {
+                        Rectangle rect = new Rectangle();
+                        rect.inputdata();
+                        rect.calculate();
+                        rect.outputdata();
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "Test2",
+            description: "Create a class Test2 with two instance variables a and b. Create a method getVal() to assign values to a and b. Create another method display() to display the values of a and b. Create another method sumobj() that takes two objects of Test2 as parameters and assigns the sum of a and b of those objects to the calling object. Create a main method to test the functionality of the class.",
+            sourceCode: `
+                public class Test2 {
+
+                    int a;
+                    int b;
+
+                    void getVal(int x, int y){
+                        a =  x;
+                        b = y;
+                    }
+
+                    void display(){
+                        System.out.println("Sum of a = "+a);
+                        System.out.println("Sum of b = "+b);
+                    }
+
+                    void sumobj(Test2 p, Test2 q) {
+                        //There are other 2 objects p and q in the context other than calling instance
+                        //p.a --> p object's a instance variable
+                        //p.b --> p object's b instance variable
+                        //q.a --> q object's  a instance variable
+                        //q.b --> q object's  b instance variable
+                        //this.a --> calling object's a instance variable
+                        //this.b --> calling object's b instance variable
+                        int a = 5, b = 10; //Local variables
+                        this.a = p.a + q.a;
+                        this.b = p.b + q.b;
+
+                        System.out.println("Sum of local variables a and b: "+(a+b));
+                    }
+
+                    public static void main(String[] args) {
+                        Test2 obj1 = new Test2();
+                        Test2 obj2 = new Test2();
+                        Test2 obj3 = new Test2();
+
+                        obj1.getVal(2, 3);
+                        obj2.getVal(4, 6);
+                        obj3.sumobj(obj1, obj2);
+                        obj3.display();
+
+                    }
+
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "Test1",
+            description: "Create a class Test1 with an instance variable n. Create a method update() that takes an integer parameter and updates the value of n with the parameter value. Create another method show() to display the value of n. Create a main method to test the functionality of the class.",
+            sourceCode: `
+                public class Test1 {
+                    int n; //instance variable
+
+                    void update(int n){
+                        this.n = n; //Correct: instance variable is getting updated
+                //        n = n; // Wrong - Local variable(Formal Parameter) is getting updated
+                    }
+
+                    void show(){
+                        System.out.println("Value of instance variable n:"+n);
+                    }
+
+                    public static void main(String[] args) {
+                        Test1 instance =  new Test1();
+                        instance.update(15);
+                        instance.show(); //Prints 15
+                        instance.update(20);
+                        instance.show(); //Prints 20
+
+                    }
+                }
+
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "Salary",
+            description: "Calculate the income tax for a person based on their monthly salary. The income tax is calculated as follows: If the annual salary (12 times the monthly salary) is greater than 1,75,000 rupees, then the income tax is 5% of the amount exceeding 1,75,000 rupees. Otherwise, there is no income tax.",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class Salary {
+                    String name;
+                    String address;
+                    String subject;
+                    long phone;
+                    double monthlySalary;
+                    double incomeTax;
+
+                    void accept() {
+                        Scanner input = new Scanner(System.in);
+                        System.out.println("Enter Name:");
+                        name = input.nextLine();
+                        System.out.println("Enter Address:");
+                        address = input.nextLine();
+                        System.out.println("Enter Subject:");
+                        subject = input.nextLine();
+                        System.out.println("Enter Phone Number:");
+                        phone = input.nextLong();
+                        System.out.println("Enter Monthly Salary:");
+                        monthlySalary = input.nextDouble();
+                    }
+
+                    void calculate() {
+                        if(12 * monthlySalary > 1_75_000) {
+                            incomeTax = (12 * monthlySalary) - (double) (1_75_000 * 5) /100;
+                        } else  {
+                            incomeTax = 0;
+                        }
+                    }
+
+                    void display() {
+                        System.out.println("Name: " + name);
+                        System.out.println("Address: " + address);
+                        System.out.println("Subject: " + subject);
+                        System.out.println("Phone Number: " + phone);
+                        System.out.println("Monthly Salary: " + monthlySalary);
+                        System.out.println("Income Tax: " + incomeTax);
+                    }
+
+                    public static void main(String[] args) {
+                        Salary salary = new Salary();
+                        salary.accept();
+                        salary.calculate();
+                        salary.display();
+                    }
+
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "LibraryBook",
+            description: "Calculate the fine for a library book based on the number of days it is returned late. The fine is calculated as follows: For the first 5 days, the fine is 2 rupees per day. For the next 5 days, the fine is 3 rupees per day. For any additional days, the fine is 5 rupees per day.",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class LibraryBook {
+                    int accessionNumber;
+                    String title;
+                    String author;
+
+
+                    void input() {
+                        Scanner input = new Scanner(System.in);
+                        System.out.print("Enter title: ");
+                        title = input.nextLine();
+                        System.out.print("Enter author: ");
+                        author = input.nextLine();
+                        System.out.print("Enter accession number: ");
+                        accessionNumber = input.nextInt();
+                    }
+
+                    void compute() {
+                        Scanner input = new Scanner(System.in);
+                        int numberOfDays;
+                        int fine;
+                        System.out.println("Enter the number of days the book is returned late: ");
+                        numberOfDays = input.nextInt();
+                        fine = numberOfDays * 2;
+                        System.out.println("Fine to be paid: " + fine);
+                    }
+
+                    void display() {
+                        System.out.println("Accession Number: " + accessionNumber);
+                        System.out.println("Book Title: " + title);
+                        System.out.println("Book Author: " + author);
+                    }
+
+                    public static void main(String[] args) {
+                        LibraryBook book = new LibraryBook();
+                        book.input();
+                        book.compute();
+                        book.display();
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "BookFair",
+            description: "Calculate the discount for a book based on its price. The discount is calculated as follows: If the price of the book is less than or equal to 1000 rupees, the discount is 2% of the price. If the price is greater than 1000 rupees and less than or equal to 3000 rupees, the discount is 10% of the price. If the price is greater than 3000 rupees, the discount is 15% of the price.",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class BookFair {
+                    private String bookName;
+                    double price;
+                    double discount;
+                    double amount;
+
+                    void input(){
+                        Scanner input = new Scanner(System.in);
+                        System.out.print("Enter book name: ");
+                        bookName = input.nextLine();
+                        System.out.print("Enter price: ");
+                        price = input.nextDouble();
+                    }
+
+                    void calculate(){
+                        if(price <= 1000){
+                            discount = price * 0.02;
+                        } else  if(price <= 3000){
+                            discount = price * 0.10;
+                        } else {
+                            discount = price * 0.15;
+                        }
+                        amount = price * discount;
+                    }
+
+                    void display(){
+                        System.out.println("Book Name: " + bookName);
+                        System.out.println("Price: " + price);
+                        System.out.println("Discount: " + discount);
+                        System.out.println("Amount: " + amount);
+                    }
+
+                    public static void main(String[] args) {
+                        BookFair bookFair = new BookFair();
+                        bookFair.input();
+                        bookFair.calculate();
+                        bookFair.display();
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "ElectricityBill",
+            description: "Calculate the electricity bill for a customer based on the number of units consumed. The bill is calculated as follows: For the first 100 units, the rate is 2 rupees per unit. For the next 200 units, the rate is 3 rupees per unit. For any additional units, the rate is 5 rupees per unit. If the total amount exceeds 400 rupees, a surcharge of 2.5% is added to the bill.",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class ElectricityBill {
+                    String name;
+                    int units;
+                    double amount;
+                    double surcharge;
+
+                    void accept() {
+                        Scanner input = new Scanner(System.in);
+                        System.out.print("Enter name: ");
+                        name = input.nextLine();
+                        System.out.print("Enter units: ");
+                        units = input.nextInt();
+                    }
+
+                    void calculate() {
+                        if(units <= 100) {
+                            surcharge = 0;
+                            amount = units * 2.0;
+                        } else if (units <= 300) {
+                            surcharge = 0;
+                            amount = (units - 100) * 3.0 + 100 * 2.0;
+                        } else {
+                            amount = (units - 300) * 5.0 + 200 * 3.0 + 100 * 2.0;
+                            surcharge = units * 0.025;
+                        }
+                        amount = amount + surcharge;
+                    }
+                    void display() {
+                        System.out.printf("Name: %s%n", name);
+                        System.out.printf("Units: %d%n", units);
+                        System.out.printf("Amount: %.2f%n", amount);
+                    }
+
+                    public static void main(String[] args) {
+                        ElectricityBill billObj = new ElectricityBill();
+                        billObj.accept();
+                        billObj.calculate();
+                        billObj.display();
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "Student",
+            description: "Calculate the percentage of a student based on the marks obtained in 5 subjects. The percentage is calculated as follows: (Total Marks Obtained / Total Maximum Marks) * 100. If the percentage is greater than or equal to 90%, a merit certificate is awarded.",
+            sourceCode: `
+                import java.util.Scanner;
+
+                public class Student {
+                    String name;
+                    double percentage;
+                    String certificate;
+
+                    void input() {
+                        Scanner input = new Scanner(System.in);
+                        System.out.println("Enter name: ");
+                        name = input.nextLine();
+                        System.out.println("Enter percentage: ");
+                        percentage = input.nextDouble();
+                    }
+
+
+                    void merit() {
+                        if(percentage >= 90) {
+                            certificate = "Merit Certificate Awarded";
+                        } else {
+                            certificate = "Merit Certificate Not Awarded";
+                        }
+                    }
+
+                    void display() {
+                        System.out.println("Name: " + name);
+                        System.out.println("Percentage: " + percentage);
+                        System.out.println("Certificate: " + certificate);
+                    }
+
+                    public static void main(String[] args) {
+                        Student student = new Student();
+                        student.input();
+                        student.merit();
+                        student.display();
+                    }
+
+                }
+
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "BioData",
+            description: "Inner Class",
+            sourceCode: `
+                public class BioData {
+                    String name;
+                    int age;
+                    Address address;
+
+                    BioData(String name, int age, Address address) {
+                        this.name = name;
+                        this.age = age;
+                        this.address = address;
+                    }
+
+                    public void displayBioData(){
+                        System.out.println("Name: " + name);
+                        System.out.println("Age: " + age);
+                        System.out.println("Address: " + address);
+                    }
+
+                    static class Address {
+                        String city;
+                        String state;
+                        String country;
+                        int pin;
+
+                        Address(){
+
+                        }
+
+                        Address(String city, String state, String country, int pin) {
+                            this.city = city;
+                            this.state = state;
+                            this.country = country;
+                            this.pin = pin;
+                        }
+
+                        @Override
+                        public String toString() {
+                            return "Address{" +
+                                    "city='" + city + '\'' +
+                                    ", state='" + state + '\'' +
+                                    ", country='" + country + '\'' +
+                                    ", pin=" + pin +
+                                    '}';
+                        }
+                    }
+
+                    public static void main(String[] args) {
+                        BioData bioData1 = new BioData("Shivam Dubey", 24, new Address("Indore", "Madhya Pradesh", "India", 452001));
+                        BioData bioData2 = new BioData("Dinesh Karthik", 38, new Address("Chennai", "Tamil Nadu", "India", 600001));
+                        BioData bioData3 = new BioData("Rajath Patidar", 24, new Address("Indore", "Madhya Pradesh", "India", 452001));
+                        BioData bioData4 = new BioData("Virat Kohli", 35, new Address("Delhi", "Delhi", "India", 110001));
+
+
+                        bioData1.displayBioData();
+                        bioData2.displayBioData();
+                        bioData3.displayBioData();
+                        bioData4.displayBioData();
+                    }
+                }
+
+            `
+        }
+    ]; // Paste your JSON array here
+
+    const toc = document.getElementById("toc");
+    const content = document.getElementById("content");
+
+    classes.forEach((cls, index) => {
+
+        const tocItem = document.createElement("li");
+        tocItem.innerHTML =
+            `<a href="#class-${index}">${cls.className}</a>`;
+        toc.appendChild(tocItem);
+
+        const page = document.createElement("div");
+        page.className = "class-page";
+        page.id = `class-${index}`;
+
+        page.innerHTML = `
+        <h2>${cls.className}</h2>
+
+        <div class="metadata">
+            <strong>Package:</strong> ${cls.packageName || ""}<br>
+            <strong>Description:</strong> ${cls.description || ""}
+        </div>
+
+        <pre><code>${escapeHtml(cls.sourceCode || "")}</code></pre>
+    `;
+
+        content.appendChild(page);
+    });
+
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+    }
+</script>
+
+</body>
+</html>

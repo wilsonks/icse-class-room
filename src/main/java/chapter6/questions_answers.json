@@ -1,0 +1,136 @@
+[
+  {
+    "id": 1,
+    "difficulty":  "easy",
+    "question": "Why is a class known as composite data type?",
+    "answer": "A class is known as a composite data type because it can contain multiple data members (variables) and member functions (methods) that operate on those data members. It allows you to group related data and behavior together, creating a more complex structure than simple data types like integers or strings.",
+    "explanation": "A class can have multiple attributes (data members) and behaviors (member functions), making it a composite data type. It allows you to create objects that encapsulate both data and functionality, providing a way to model real-world entities and their interactions."
+  },
+  {
+      "id": 2,
+      "difficulty":  "medium",
+      "question": "What is the difference between a class and an object?",
+      "answer": "A class is a blueprint or template for creating objects, while an object is an instance of a class. A class defines the structure and behavior of objects, while an object represents a specific instance of that class with its own unique state.",
+      "explanation": "A class is like a blueprint that defines the properties and behaviors of objects, while an object is a specific instance of that class. For example, if you have a class called 'Car', it defines the attributes (like color, make, model) and behaviors (like start, stop) of a car. An object would be a specific car, such as 'myCar', which has its own color, make, model, and can perform the behaviors defined in the Car class."
+  },
+  {
+      "id": 3,
+      "difficulty":  "hard",
+      "question": "What is the purpose of a constructor in a class?",
+      "answer": "A constructor is a special member function in a class that is automatically called when an object of the class is created. Its purpose is to initialize the object's data members and set up any necessary resources or configurations for the object.",
+      "explanation": "A constructor allows you to create and initialize objects in a consistent and controlled manner. It can take parameters to provide initial values for the object's attributes, ensuring that the object is in a valid state when it is created. Constructors can also be overloaded, allowing for different ways to initialize objects based on the provided arguments."
+  },
+  {
+      "id": 4,
+      "difficulty":  "medium",
+      "question": "Name the types of data used in a class.",
+      "answer": "The types of data used in a class can include primitive data types (such as int, float, char), reference data types (such as objects of other classes), and  collections (such as arrays, lists, or maps). Additionally, a class can also have static data members that are shared among all instances of the class.",
+      "explanation": "In a class, you can use various types of data to define the attributes of the class. Primitive data types are basic types that hold simple values, while reference data types can hold references to objects. Collections allow you to store multiple values in a single variable. Static data members are shared across all instances of the class, meaning they belong to the class itself rather than any specific object."
+  },
+  {
+    "id": 5,
+    "difficulty":  "easy",
+    "question": "What is the purpose of new keyword in Java?",
+    "answer": "The new keyword in Java is used to create new objects. It allocates memory for the object and returns a reference to that memory. When you use the new keyword, you are creating an instance of a class, which allows you to access the attributes and behaviors defined in the class.",
+    "explanation": "The new keyword is essential for creating objects in Java. It allows you to instantiate a class and initialize its attributes. For example, if you have a class called 'Person', you can create a new object of that class using the new keyword like this: Person person1 = new Person();. This creates a new instance of the Person class and assigns it to the variable person1, allowing you to access its attributes and methods."
+  },
+  {
+    "id": 6,
+    "difficulty":  "hard",
+    "question": "Can a class be reffered to as a data type?",
+    "answer": "Yes, a class can be referred to as a data type in object-oriented programming. In Java, for example, a class defines a new data type that can be used to create objects. When you declare a variable of a class type, you are essentially declaring a variable that can hold a reference to an object of that class. This allows you to use the class as a blueprint for creating objects and working with them as data types in your program.",
+    "explanation": "In object-oriented programming, a class is a user-defined data type that encapsulates data and behavior. When you create an object of a class, you are creating an instance of that data type. This allows you to use the class as a template for creating multiple objects that share the same structure and behavior. For example, if you have a class called 'Car', you can create multiple objects of that class, such as 'car1', 'car2', etc., each representing a specific instance of the Car data type."
+  },
+  {
+    "id": 7,
+    "difficulty":  "medium",
+    "question": "What is the public access of a class?",
+    "answer": "The public access modifier in a class allows the members (attributes and methods) of the class to be accessed from any other class or code outside of the class. When a member is declared as public, it can be accessed and used by any code that has visibility to the class, regardless of its location in the program. This means that public members can be accessed from other classes, packages, or even from outside the program if the class is part of a library or API.",
+    "explanation": "The public access modifier is one of the access levels in Java that allows for the widest level of accessibility. When a member of a class is declared as public, it can be accessed from anywhere in the program. This is useful when you want to allow other classes or code outside of the class to interact with its members. For example, if you have a class called 'Person' with a public method called 'getName()', you can call that method from another class or even from outside the program if the Person class is part of a library. However, it's important to use public access judiciously to maintain encapsulation and prevent unintended access to sensitive data or functionality."
+  },
+  {
+    "id": 8,
+    "difficulty":  "easy",
+    "question": "How are private members of a class different from public members?",
+    "answer": "Private members of a class are only accessible within the class itself, while public members can be accessed from outside the class. Private members are typically used to encapsulate data and behavior that should not be directly accessed or modified by external code, while public members are intended to be accessed and used by other classes or code outside of the class. Private members can only be accessed through public methods (getters and setters) or within the class itself, while public members can be accessed directly from outside the class.",
+    "explanation": "The main difference between private and public members of a class is their accessibility. Private members are hidden from external code and can only be accessed within the class itself. This allows for encapsulation, which is a fundamental principle of object-oriented programming that helps to protect the internal state of an object and prevent unintended access or modification. Public members, on the other hand, are accessible from outside the class and can be used by other classes or code. This allows for interaction and communication between different classes in a program. It's important to use private members to protect sensitive data and maintain the integrity of an object, while public members can be used to provide an interface for other classes to interact with the object."
+  },
+  {
+    "id": 9,
+    "difficulty":  "medium",
+    "question": "mention any three advantages of using classes in programming.",
+    "answer": "1. Encapsulation: Classes allow for encapsulation, which is the bundling of data and methods that operate on that data within a single unit. This helps to protect the internal state of an object and prevents unintended access or modification from external code. It promotes data integrity and allows for better organization of code. 2. Reusability: Classes can be reused across different parts of a program or even in different programs. Once a class is defined, you can create multiple objects of that class, which allows for code reuse and reduces redundancy. This promotes efficiency and saves development time. 3. Inheritance: Classes can be used to create a hierarchy of classes through inheritance. This allows for the creation of new classes that inherit properties and behaviors from existing classes, promoting code reuse and allowing for the creation of more specialized classes. Inheritance helps to establish relationships between classes and promotes a more organized and modular code structure.",
+    "explanation": "Using classes in programming provides several advantages. Encapsulation allows for better organization and protection of data, while reusability promotes efficiency and reduces redundancy in code. Inheritance allows for the creation of new classes based on existing classes, promoting code reuse and a more organized code structure. These advantages make classes a fundamental concept in object-oriented programming and contribute to the development of more maintainable and scalable software."
+  },
+  {
+    "id": 10,
+    "difficulty": "hard",
+    "question": "Mention any two attributes required to create a class.",
+    "answer": "1. Class Name: The class name is a unique identifier for the class. It should be descriptive and follow naming conventions to indicate the purpose of the class. The class name is used to create objects and access the members of the class. 2. Data Members: Data members, also known as attributes or fields, are variables that hold the state or properties of an object created from the class. They define the characteristics of the objects and can be of various data types, such as primitive types (int, float, char) or reference types (objects of other classes). Data members can be declared with different access modifiers (public, private, protected) to control their accessibility and encapsulation.",
+    "explanation": "To create a class, you need to define certain attributes that are essential for the class to function properly. The class name is crucial as it serves as the identifier for the class and allows you to create objects from it. Data members are also important as they define the properties and state of the objects created from the class. These attributes are fundamental in defining the structure and behavior of the class, allowing you to create meaningful and functional objects in your program."
+  },
+  {
+    "id": 11,
+    "difficulty": "medium",
+    "question": "Explain instance variables and class variables.",
+    "answer": "Instance variables are variables that are defined within a class but outside of any method. They are associated with individual instances (objects) of the class and hold data that is specific to each object. Each object created from the class has its own copy of the instance variables, allowing them to have different values for those variables. Class variables, on the other hand, are variables that are declared with the static keyword and are shared among all instances of the class. They belong to the class itself rather than any specific object, meaning that there is only one copy of a class variable regardless of how many objects are created from the class. Class variables are typically used to store data that is common to all objects of the class, such as a count of how many objects have been created.",
+    "explanation": "Instance variables are specific to each object created from a class, allowing them to hold different values for each object. They are defined within the class but outside of any method, and they are accessed through the objects of the class. Class variables, on the other hand, are shared among all instances of the class and belong to the class itself. They are declared with the static keyword and are accessed through the class name rather than through individual objects. Class variables are useful for storing data that is common to all objects of the class, while instance variables allow for individual object state and behavior."
+  },
+  {
+    "id": 12,
+    "difficulty": "easy",
+    "question": "Explain any two types of access modifiers used in a class.",
+    "answer": "1. Public Access Modifier: The public access modifier allows members of a class to be accessed from any other class or code outside of the class. When a member is declared as public, it can be accessed and used by any code that has visibility to the class, regardless of its location in the program. This means that public members can be accessed from other classes, packages, or even from outside the program if the class is part of a library or API. 2. Private Access Modifier: The private access modifier restricts access to members of a class to only within the class itself. When a member is declared as private, it cannot be accessed or used by any code outside of the class. Private members are typically used to encapsulate data and behavior that should not be directly accessed or modified by external code, while public members are intended to be accessed and used by other classes or code outside of the class. Private members can only be accessed through public methods (getters and setters) or within the class itself, while public members can be accessed directly from outside the class.",
+    "explanation": "Access modifiers are used in a class to control the visibility and accessibility of its members (attributes and methods). The public access modifier allows members to be accessed from anywhere in the program, while the private access modifier restricts access to only within the class itself. This allows for encapsulation, which is a fundamental principle of object-oriented programming that helps to protect the internal state of an object and prevent unintended access or modification from external code. By using access modifiers effectively, you can maintain the integrity of your objects and promote better organization and modularity in your code."
+  },
+  {
+    "id": 13,
+    "difficulty": "medium",
+    "question": "Object is an instance of a class. Explain.",
+    "answer": "In object-oriented programming, a class is a blueprint or template that defines the structure and behavior of objects. An object is an instance of a class, meaning that it is a specific realization of the class with its own unique state and behavior. When you create an object from a class, you are essentially creating an instance of that class, which allows you to access the attributes and behaviors defined in the class. Each object created from the class can have its own values for the attributes and can perform the behaviors defined in the class, making it a distinct entity that can interact with other objects in the program.",
+    "explanation": "An object is an instance of a class because it is created based on the blueprint provided by the class. The class defines the properties (attributes) and behaviors (methods) that the object can have, while the object itself is a specific instance of that class with its own unique state. For example, if you have a class called 'Car', you can create multiple objects of that class, such as 'car1', 'car2', etc., each representing a specific instance of the Car class. Each of these objects can have different values for the attributes (like color, make, model) and can perform the behaviors defined in the Car class (like start, stop). This allows for the creation of multiple objects that share the same structure and behavior, while still maintaining their own unique state and identity."
+  },
+  {
+    "id": 14,
+    "difficulty": "hard",
+    "question": "Differentiate between builtin data types and user defined data types.",
+    "answer": "Builtin data types, also known as primitive data types, are predefined by the programming language and represent basic types of data such as integers, floating-point numbers, characters, and booleans. These data types are typically implemented at a low level and have specific memory requirements and operations defined by the language. User-defined data types, on the other hand, are created by programmers using classes or structures to define new types that can encapsulate data and behavior. User-defined data types allow for more complex and customized data structures that can represent real-world entities and their interactions. They can include multiple attributes and methods, and can be designed to meet specific requirements of a program. While builtin data types are limited to a fixed set of types defined by the language, user-defined data types provide flexibility and extensibility in programming, allowing developers to create their own data structures and behaviors to suit their needs.",
+    "explanation": "Builtin data types are the basic types of data that are predefined by the programming language, while user-defined data types are created by programmers to define new types that can encapsulate data and behavior. Builtin data types are typically simple and have specific memory requirements and operations defined by the language, while user-defined data types can be more complex and customized to represent real-world entities and their interactions. User-defined data types provide flexibility and extensibility in programming, allowing developers to create their own data structures and behaviors to suit their needs, while builtin data types are limited to a fixed set of types defined by the language."
+  },
+  {
+    "id": 15,
+    "difficulty": "medium",
+    "question": "What is the purpose of a class in object-oriented programming?",
+    "answer": "The purpose of a class in object-oriented programming is to serve as a blueprint or template for creating objects. A class defines the structure and behavior of objects by encapsulating data (attributes) and methods (behaviors) that operate on that data. It allows developers to model real-world entities and their interactions in a more organized and modular way. By using classes, programmers can create reusable code, promote encapsulation, and establish relationships between different entities in a program through inheritance and polymorphism.",
+    "explanation": "A class is a fundamental concept in object-oriented programming that provides a way to define new data types and create objects based on those definitions. It allows developers to group related data and behavior together, making it easier to manage and maintain code. Classes enable the creation of objects that can have their own unique state and behavior while still sharing common characteristics defined by the class. This promotes code reuse, encapsulation, and the ability to model complex systems in a more intuitive way."
+  },
+  {
+    "id": 16,
+    "difficulty": "easy",
+    "question": "Differentiate between static data member and non-static data member.",
+    "answer": "A static data member, also known as a class variable, is a variable that is declared with the static keyword and is shared among all instances of a class. It belongs to the class itself rather than any specific object, meaning that there is only one copy of a static data member regardless of how many objects are created from the class. Static data members are typically used to store data that is common to all objects of the class, such as a count of how many objects have been created. Non-static data members, on the other hand, are variables that are defined within a class but outside of any method and are associated with individual instances (objects) of the class. Each object created from the class has its own copy of the non-static data members, allowing them to have different values for those variables. Non-static data members are used to hold data that is specific to each object, such as the attributes or properties of an object.",
+    "explanation": "The main difference between static data members and non-static data members is their association with the class and objects. Static data members are shared among all instances of the class and belong to the class itself, while non-static data members are specific to each object created from the class and belong to the individual objects. Static data members are useful for storing data that is common to all objects of the class, while non-static data members allow for individual object state and behavior. When you access a static data member, you do so through the class name, while non-static data members are accessed through the objects of the class."
+  },
+  {
+    "id": 17,
+    "difficulty": "medium",
+    "question": "Differentiate between private and protected access modifiers.",
+    "answer": "The private access modifier restricts access to members of a class to only within the class itself. When a member is declared as private, it cannot be accessed or used by any code outside of the class. Private members are typically used to encapsulate data and behavior that should not be directly accessed or modified by external code, while public members are intended to be accessed and used by other classes or code outside of the class. Private members can only be accessed through public methods (getters and setters) or within the class itself, while public members can be accessed directly from outside the class. The protected access modifier, on the other hand, allows access to members of a class from within the class itself, as well as from subclasses (derived classes) and classes in the same package. When a member is declared as protected, it can be accessed by the class itself, its subclasses, and classes in the same package, but it cannot be accessed from outside the package or by classes that are not subclasses. Protected members are often used to allow access to certain members of a class while still maintaining some level of encapsulation and restricting access from external code.",
+    "explanation": "The main difference between private and protected access modifiers is the level of accessibility they provide. Private members are only accessible within the class itself, while protected members can be accessed from within the class, its subclasses, and classes in the same package. Private members are used to encapsulate data and behavior that should not be directly accessed or modified by external code, while protected members allow for some level of access while still maintaining encapsulation. When you declare a member as private, it can only be accessed through public methods or within the class itself, while protected members can be accessed by subclasses and classes in the  same package, but not from outside the package or by classes that are not subclasses."
+  },
+  {
+    "id": 18,
+    "difficulty": "hard",
+    "question": "Why cant every class be termed as user defined data type?",
+    "answer": "Not every class can be termed as a user-defined data type because some classes may be designed for specific purposes or may not encapsulate data and behavior in a way that allows them to be used as a data type. A user-defined data type typically refers to a class that is created by programmers to define new types that can encapsulate data and behavior, allowing for the creation of objects that represent real-world entities and their interactions. However, some classes may be designed for specific functionalities, such as utility classes or abstract classes, that may not be intended to be used as data types. Additionally, some classes may not have the necessary attributes and methods to be considered a user-defined data type, as they may not provide a meaningful representation of data or behavior. Therefore, while many classes can be considered user-defined data types, not every class may fit this definition based on its design and intended use in a program.",
+    "explanation": "A user-defined data type typically refers to a class that is created by programmers to define new types that can encapsulate data and behavior, allowing for the creation of objects that represent real-world entities and their interactions. However, not every class may fit this definition based on its design and intended use in a program. Some classes may be designed for specific functionalities or may not encapsulate data and behavior in a way that allows them to be used as a data type. For example, utility classes that provide static methods for performing specific tasks may not be considered user-defined data types, as they do not represent a meaningful entity with attributes and behaviors. Similarly, abstract classes that are meant to be subclassed may not be considered user-defined data types, as they cannot be instantiated on their own. Therefore, while many classes can be considered user-defined data types, it is important to evaluate the design and purpose of each class to determine whether it fits this definition."
+  },
+  {
+    "id": 19,
+    "difficulty": "medium",
+    "question": "Why class is called as object factory?",
+    "answer": "A class is called an object factory because it serves as a blueprint or template for creating objects. When you define a class, you are essentially creating a factory that can produce multiple instances (objects) of that class. Each time you create an object from the class, you are using the class as a factory to generate a new instance with its own unique state and behavior. The class defines the structure and behavior of the objects it creates, allowing you to create multiple objects that share the same characteristics and functionality defined by the class.",
+    "explanation": "The term 'object factory' is used to describe a class because it provides a way to create objects based on the blueprint defined by the class. Just like a factory produces multiple products based on a design, a class can produce multiple objects based on its definition. Each object created from the class can have its own unique state and behavior, while still sharing the common characteristics and functionality defined by the class. This allows for code reuse and promotes a more organized and modular approach to programming, as you can create multiple objects from the same class without having to duplicate code. The class acts as a factory that generates objects, making it easier to manage and maintain code while still allowing for flexibility and extensibility in programming."
+  }
+
+]
