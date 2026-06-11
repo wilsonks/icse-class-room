@@ -4,6 +4,10 @@
   ~
   ~  SPDX-License-Identifier: MIT
   ~
+  ~  Chapter : Chapter 6 - Class as the Basis of all Computations
+  ~  Purpose:
+  ~  Notes:
+  ~    -
   ~  */
   ~
   -->
@@ -13,38 +17,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Printable Q&A Report</title>
+    <title>Printable Java Q&A</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.5; }
-        h1 { text-align:center; }
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            page-break-inside: avoid;
-        }
-        .meta { font-size: 12px; color: #555; margin-bottom: 8px; }
-        .question { font-weight: bold; font-size: 16px; }
-        .answer, .explanation { margin-top: 8px; }
-        .badge {
-            display:inline-block;
-            padding:2px 8px;
-            border:1px solid #888;
-            border-radius:12px;
-            font-size:12px;
-        }
+        h1, h2 { text-align:center; }
+        button { margin-bottom:20px; }
+        .toc { border:1px solid #ccc; padding:15px; margin-bottom:25px; border-radius:8px; }
+        .toc ol { padding-left:25px; }
+        .card { border:1px solid #ccc; border-radius:8px; padding:15px; margin-bottom:15px; page-break-inside:avoid; }
+        .meta { color:#666; font-size:12px; margin-bottom:8px; }
+        .badge { display:inline-block; border:1px solid #888; border-radius:12px; padding:2px 8px; font-size:12px; }
+        .question { font-size:18px; font-weight:bold; }
+        .answer,.explanation { margin-top:10px; }
+        .back { margin-top:10px; font-size:12px; }
         @media print {
             button { display:none; }
-            body { margin: 10px; }
+            .toc { page-break-after: always; }
         }
     </style>
 </head>
 <body>
-<h1>Chapter 6 : Classes and Objects</h1>
+<h1 id="top">Chapter 6: Classes and Objects</h1>
 <button onclick="window.print()">Print</button>
 
-<p>Paste your JSON array into the <code>data</code> variable below.</p>
+<div class="toc">
+    <h2>Question Index</h2>
+    <ol id="questionIndex"></ol>
+</div>
 
 <div id="content"></div>
 
@@ -184,23 +183,32 @@
             "explanation": "The term 'object factory' is used to describe a class because it provides a way to create objects based on the blueprint defined by the class. Just like a factory produces multiple products based on a design, a class can produce multiple objects based on its definition. Each object created from the class can have its own unique state and behavior, while still sharing the common characteristics and functionality defined by the class. This allows for code reuse and promotes a more organized and modular approach to programming, as you can create multiple objects from the same class without having to duplicate code. The class acts as a factory that generates objects, making it easier to manage and maintain code while still allowing for flexibility and extensibility in programming."
         }
 
-    ]; // Paste your JSON array here
+    ]; // Paste JSON array here
 
-    const container = document.getElementById("content");
+    const content = document.getElementById('content');
+    const index = document.getElementById('questionIndex');
 
     data.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "card";
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#q-${item.id}">${item.question}</a>`;
+        index.appendChild(li);
+
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.id = `q-${item.id}`;
+
         div.innerHTML = `
     <div class="meta">
-      ID: ${item.id || ""} |
-      <span class="badge">${item.difficulty || ""}</span>
+      ID: ${item.id} |
+      <span class="badge">${item.difficulty}</span>
     </div>
-    <div class="question">Q. ${item.question || ""}</div>
-    <div class="answer"><strong>Answer:</strong><br>${item.answer || ""}</div>
-    <div class="explanation"><strong>Explanation:</strong><br>${item.explanation || ""}</div>
+    <div class="question">Q${item.id}. ${item.question}</div>
+    <div class="answer"><strong>Answer:</strong><br>${item.answer || ''}</div>
+    <div class="explanation"><strong>Explanation:</strong><br>${item.explanation || ''}</div>
+    <div class="back"><a href="#top">Back to Index</a></div>
   `;
-        container.appendChild(div);
+
+        content.appendChild(div);
     });
 </script>
 </body>

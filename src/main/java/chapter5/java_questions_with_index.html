@@ -4,6 +4,10 @@
   ~
   ~  SPDX-License-Identifier: MIT
   ~
+  ~  Chapter : Chapter 6 - Class as the Basis of all Computations
+  ~  Purpose:
+  ~  Notes:
+  ~    -
   ~  */
   ~
   -->
@@ -13,38 +17,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Printable Q&A Report</title>
+    <title>Printable Java Q&A</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.5; }
-        h1 { text-align:center; }
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            page-break-inside: avoid;
-        }
-        .meta { font-size: 12px; color: #555; margin-bottom: 8px; }
-        .question { font-weight: bold; font-size: 16px; }
-        .answer, .explanation { margin-top: 8px; }
-        .badge {
-            display:inline-block;
-            padding:2px 8px;
-            border:1px solid #888;
-            border-radius:12px;
-            font-size:12px;
-        }
+        h1, h2 { text-align:center; }
+        button { margin-bottom:20px; }
+        .toc { border:1px solid #ccc; padding:15px; margin-bottom:25px; border-radius:8px; }
+        .toc ol { padding-left:25px; }
+        .card { border:1px solid #ccc; border-radius:8px; padding:15px; margin-bottom:15px; page-break-inside:avoid; }
+        .meta { color:#666; font-size:12px; margin-bottom:8px; }
+        .badge { display:inline-block; border:1px solid #888; border-radius:12px; padding:2px 8px; font-size:12px; }
+        .question { font-size:18px; font-weight:bold; }
+        .answer,.explanation { margin-top:10px; }
+        .back { margin-top:10px; font-size:12px; }
         @media print {
             button { display:none; }
-            body { margin: 10px; }
+            .toc { page-break-after: always; }
         }
     </style>
 </head>
 <body>
-<h1>Chapter 5 : User-defined Methods</h1>
+<h1 id="top">Chapter 5: User-defined Methods</h1>
 <button onclick="window.print()">Print</button>
 
-<p>Paste your JSON array into the <code>data</code> variable below.</p>
+<div class="toc">
+    <h2>Question Index</h2>
+    <ol id="questionIndex"></ol>
+</div>
 
 <div id="content"></div>
 
@@ -189,29 +188,45 @@
             "question": "Define: Access Specifiers. What are the different access specifiers in Java and their significance?",
             "answer": "Access specifiers in Java are keywords that determine the visibility and accessibility of classes, methods, and variables. They control which parts of the code can access certain members of a class. The different access specifiers in Java are: 1) Public: Members declared as public are accessible from any other class in the same package or different packages. 2) Private: Members declared as private are only accessible within the same class. They cannot be accessed from outside the class, even by subclasses. 3) Protected: Members declared as protected are accessible within the same package and also by subclasses in different packages. 4) Default (Package-Private): If no access specifier is specified, the member is considered to have default access, which means it is accessible only within the same package. The significance of access specifiers is that they help to encapsulate and protect the internal state of an object, allowing developers to control how the members of a class can be accessed and modified. This promotes better code organization, maintainability, and security by preventing unauthorized access to sensitive data and ensuring that the internal implementation of a class is hidden from external code.",
             "explanation": "Access specifiers are an important aspect of object-oriented programming in Java, as they allow developers to define the level of access that other classes have to the members of a class. By using access specifiers, developers can enforce encapsulation and information hiding, which are key principles of OOP. For example, by declaring a variable as private, you can prevent other classes from directly accessing or modifying that variable, ensuring that it can only be accessed through controlled methods (getters and setters). This helps to maintain the integrity of the data and allows for better control over how the class's members are used and modified."
+        },
+        {
+            "id": 21,
+            "difficulty":  "medium",
+            "question": "What are the restrictions for method names in Java?",
+            "answer": "In Java, method names must follow certain restrictions: 1) Method names must begin with a letter (a-z or A-Z), a dollar sign ($), or an underscore (_). They cannot begin with a digit. 2) Method names can only contain letters, digits (0-9), dollar signs ($), and underscores (_). They cannot contain spaces or special characters. 3) Method names are case-sensitive, meaning that 'myMethod' and 'mymethod' would be considered different method names. 4) Method names cannot be the same as Java reserved keywords (such as 'class', 'public', 'void', etc.). 5) Method names should be descriptive and follow the camelCase naming convention, where the first letter of the method name is lowercase and the first letter of each subsequent word is capitalized (e.g., 'calculateSum', 'printMessage'). 6) Method names should not be the same as the class name, as this can cause confusion and is not allowed in Java. 7) Method names should not be too long or too short; they should be meaningful and convey the purpose of the method clearly.",
+            "explanation": "Following these restrictions for method names in Java is important for ensuring that the code is readable, maintainable, and free of errors. Using descriptive and meaningful method names can help other developers understand the purpose of the method and how it should be used. Additionally, adhering to naming conventions and avoiding reserved keywords can prevent syntax errors and improve the overall quality of the code. It is also important to avoid using method names that are the same as the class name, as this can lead to confusion and is not allowed in Java. By following these guidelines for method names, developers can create clear and effective code that is easy to understand and maintain."
         }
 
 
 
 
 
-    ]; // Paste your JSON array here
+    ]; // Paste JSON array here
 
-    const container = document.getElementById("content");
+    const content = document.getElementById('content');
+    const index = document.getElementById('questionIndex');
 
     data.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "card";
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#q-${item.id}">${item.question}</a>`;
+        index.appendChild(li);
+
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.id = `q-${item.id}`;
+
         div.innerHTML = `
     <div class="meta">
-      ID: ${item.id || ""} |
-      <span class="badge">${item.difficulty || ""}</span>
+      ID: ${item.id} |
+      <span class="badge">${item.difficulty}</span>
     </div>
-    <div class="question">Q. ${item.question || ""}</div>
-    <div class="answer"><strong>Answer:</strong><br>${item.answer || ""}</div>
-    <div class="explanation"><strong>Explanation:</strong><br>${item.explanation || ""}</div>
+    <div class="question">Q${item.id}. ${item.question}</div>
+    <div class="answer"><strong>Answer:</strong><br>${item.answer || ''}</div>
+    <div class="explanation"><strong>Explanation:</strong><br>${item.explanation || ''}</div>
+    <div class="back"><a href="#top">Back to Index</a></div>
   `;
-        container.appendChild(div);
+
+        content.appendChild(div);
     });
 </script>
 </body>

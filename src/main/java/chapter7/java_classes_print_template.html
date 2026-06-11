@@ -1,0 +1,403 @@
+<!--
+  ~ /**
+  ~  Copyright (c) 2026 Wilson K Sam
+  ~
+  ~  SPDX-License-Identifier: MIT
+  ~
+  ~  Chapter : Chapter 6 - Class as the Basis of all Computations
+  ~  Purpose:
+  ~  Notes:
+  ~    -
+  ~  */
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Constructors Documentation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.5;
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        .class-page {
+            page-break-after: always;
+            margin-bottom: 40px;
+        }
+
+        .metadata {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        pre {
+            border: 1px solid #ccc;
+            padding: 15px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin: 6px 0;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+<h1>Java Programs related to Constructors</h1>
+
+<div class="toc">
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+</div>
+
+<hr>
+
+<div id="content"></div>
+
+<script>
+    /*
+    Paste your classes here.
+
+    Example:
+
+    const classes = [
+    {
+      packageName: "com.company.service",
+      className: "CustomerService",
+      description: "Handles customer operations",
+      sourceCode: `
+    @Service
+    public class CustomerService {
+        public String hello() {
+            return "Hello";
+        }
+    }
+    `
+    }
+    ];
+    */
+
+    const classes = [
+        {
+            packageName: "java.lang.String",
+            className: "StringReversalExample",
+            description: "String Reversal Recursively",
+            sourceCode: `
+                public class StringReversalExample {
+
+                    public static String reverseString(String str) {
+                        if (str.isEmpty()) {
+                            return str;
+                        }
+                        return reverseString(str.substring(1)) + str.charAt(0);
+                    }
+
+                    public static void main(String[] args) {
+                        String original = "Hello, World!";
+                        String reversed = reverseString(original);
+                        System.out.println("Original: " + original);
+                        System.out.println("Reversed: " + reversed);
+                    }
+                }
+            `,
+        },
+        {
+            packageName: "java.lang.String",
+            className: "StringPalindromeCheckExample",
+            description: "String Palindrome Recursively",
+            sourceCode: `
+                public class StringPalindromeCheckExample {
+
+                    public static boolean isPalindrome(String str) {
+                        if (str.length() <= 1) {
+                            return true;
+                        }
+                        if (str.charAt(0) != str.charAt(str.length() - 1)) {
+                            return false;
+                        }
+                        return isPalindrome(str.substring(1, str.length() - 1));
+                    }
+
+                    public static void main(String[] args) {
+                        String testString = "madam";
+                        boolean result = isPalindrome(testString);
+                        System.out.println("Is \"" + testString + "\" a palindrome? " + result);
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.String",
+            className: "MathematicalFibonacciExample",
+            description: "String Fibonacci Recursively",
+            sourceCode: `
+                public class MathematicalFibonacciExample {
+
+                    public static int fibonacci(int n) {
+                        if (n <= 1) {
+                            return n;
+                        }
+                        return fibonacci(n - 1) + fibonacci(n - 2);
+                    }
+
+                    public static void main(String[] args) {
+                        int n = 10; // Change this value to compute Fibonacci for different n
+                        System.out.println("Fibonacci of " + n + " is: " + fibonacci(n));
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.String",
+            className: "MathematicalFactorial",
+            description: "String Factorial Recursively",
+            sourceCode: `
+                public class MathematicalFactorial {
+
+                    public static int factorial(int n) {
+                        if (n == 0 || n == 1) {
+                            return 1;
+                        }
+                        return n * factorial(n - 1);
+                    }
+
+                    public static void main(String[] args) {
+                        int n = 5; // Change this value to compute factorial for different n
+                        System.out.println("Factorial of " + n + " is: " + factorial(n));
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.int",
+            className: "NumberAutoMorphicCheck",
+            description: "NumberAutoMorphicCheck Recursively",
+            sourceCode: `
+                public class NumberAutoMorphicCheck {
+
+                    public static boolean isAutomorphic(int number) {
+                        int square = number * number;
+                        String numStr = Integer.toString(number); // Convert the number to a string to check its digits
+                        String squareStr = Integer.toString(square); // Convert the square to a string to check its digits
+                        return squareStr.endsWith(numStr); //Check it's square ends with
+                    }
+
+                    public static void main(String[] args) {
+                        int testNumber = 25; // Change this value to test different numbers
+                        boolean result = isAutomorphic(testNumber);
+                        System.out.println("Is " + testNumber + " an automorphic number? " + result);
+                    }
+                }
+
+            `
+        },
+        {
+            packageName: "java.lang.int",
+            className: "NumberIsPrimeCheck",
+            description: "Number Prime Recursively",
+            sourceCode: `
+                public class NumberIsPrimeCheck {
+
+                    public static boolean isPrime(int number) {
+                        if (number <= 1) {
+                            return false; // 0 and 1 are not prime numbers
+                        }
+                        for (int i = 2; i <= Math.sqrt(number); i++) {
+                            if (number % i == 0) {
+                                return false; // Found a divisor, not prime
+                            }
+                        }
+                        return true; // No divisors found, it's prime
+                    }
+
+                    public static void main(String[] args) {
+                        int testNumber = 29; // Change this value to test different numbers
+                        boolean result = isPrime(testNumber);
+                        System.out.println("Is " + testNumber + " a prime number? " + result);
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.String",
+            className: "StringDisplayVowels",
+            description: "String Display Vowels",
+            sourceCode: `
+                public class StringDisplayVowels {
+
+                    public static void displayVowels(String str) {
+                        System.out.println("Vowels in the string: ");
+                        for (char ch : str.toCharArray()) {
+                            if (isVowel(ch)) {
+                                System.out.print(ch + " ");
+                            }
+                        }
+                        System.out.println(); // Print a new line after displaying vowels
+                    }
+
+                    private static boolean isVowel(char ch) {
+                        ch = Character.toLowerCase(ch);
+                        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+                    }
+
+                    public static void main(String[] args) {
+                        String inputString = "Hello, World!";
+                        displayVowels(inputString);
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.int",
+            className: "NumberBuzzNumberCheck",
+            description: "String Reversal Recursively",
+            sourceCode: `
+                public class NumberBuzzNumberCheck {
+
+                    public static void checkNumber(int number) {
+                        if (number % 3 == 0 && number % 5 == 0) {
+                            System.out.println("FizzBuzz");
+                        } else if (number % 3 == 0) {
+                            System.out.println("Fizz");
+                        } else if (number % 5 == 0) {
+                            System.out.println("Buzz");
+                        } else {
+                            System.out.println(number);
+                        }
+                    }
+
+                    public static void main(String[] args) {
+                        int numberToCheck = 15; // Change this value to check different numbers
+                        checkNumber(numberToCheck);
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.int",
+            className: "NumberFrequencyOfADigit",
+            description: "Count Digit Frequency in a Number",
+            sourceCode: `
+                public class NumberFrequencyOfADigit {
+
+                    public static int countDigitFrequency(int number, int digit) {
+                        int count = 0;
+                        while (number > 0) {
+                            int lastDigit = number % 10; // Get the last digit
+                            if (lastDigit == digit) {
+                                count++;
+                            }
+                            number /= 10; // Remove the last digit
+                        }
+                        return count;
+                    }
+
+                    public static void main(String[] args) {
+                        int number = 1234567890; // Change this value to check different numbers
+                        int digitToCount = 1; // Change this value to count different digits
+                        int frequency = countDigitFrequency(number, digitToCount);
+                        System.out.println("The digit " + digitToCount + " appears " + frequency + " times in the number " + number);
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang",
+            className: "PureMethodExample",
+            description: "Pure and Impure method example",
+            sourceCode: `
+                public class PureMethodExample {
+
+                    // Pure method: It always produces the same output for the same input and has no side effects.
+                    public static int add(int a, int b) {
+                        return a + b;
+                    }
+
+                    // Impure method: It may produce different outputs for the same input or has side effects.
+                    public static void printCurrentTime() {
+                        System.out.println("Current time: " + System.currentTimeMillis());
+                    }
+
+                    public static void main(String[] args) {
+                        // Testing the pure method
+                        int result1 = add(5, 10);
+                        int result2 = add(5, 10);
+                        System.out.println("Result of add(5, 10): " + result1); // Always 15
+                        System.out.println("Result of add(5, 10): " + result2); // Always 15
+
+                        // Testing the impure method
+                        printCurrentTime(); // Will print different times each time it's called
+                        printCurrentTime(); // Will print different times each time it's called
+                    }
+                }
+            `
+        }
+
+    ];
+
+    const toc = document.getElementById("toc");
+    const content = document.getElementById("content");
+
+    classes.forEach((cls, index) => {
+
+        const tocItem = document.createElement("li");
+        tocItem.innerHTML =
+            `<a href="#class-${index}">${cls.className}</a>`;
+        toc.appendChild(tocItem);
+
+        const page = document.createElement("div");
+        page.className = "class-page";
+        page.id = `class-${index}`;
+
+        page.innerHTML = `
+        <h2>${cls.className}</h2>
+
+        <div class="metadata">
+            <strong>Package:</strong> ${cls.packageName || ""}<br>
+            <strong>Description:</strong> ${cls.description || ""}
+        </div>
+
+        <pre><code>${escapeHtml(cls.sourceCode || "")}</code></pre>
+    `;
+
+        content.appendChild(page);
+    });
+
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+    }
+</script>
+
+</body>
+</html>

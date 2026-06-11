@@ -1,0 +1,80 @@
+<!--
+  ~ /**
+  ~  Copyright (c) 2026 Wilson K Sam
+  ~
+  ~  SPDX-License-Identifier: MIT
+  ~
+  ~  Chapter : Chapter 6 - Class as the Basis of all Computations
+  ~  Purpose:
+  ~  Notes:
+  ~    -
+  ~  */
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Java Q&A</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.5; }
+        h1, h2 { text-align:center; }
+        button { margin-bottom:20px; }
+        .toc { border:1px solid #ccc; padding:15px; margin-bottom:25px; border-radius:8px; }
+        .toc ol { padding-left:25px; }
+        .card { border:1px solid #ccc; border-radius:8px; padding:15px; margin-bottom:15px; page-break-inside:avoid; }
+        .meta { color:#666; font-size:12px; margin-bottom:8px; }
+        .badge { display:inline-block; border:1px solid #888; border-radius:12px; padding:2px 8px; font-size:12px; }
+        .question { font-size:18px; font-weight:bold; }
+        .answer,.explanation { margin-top:10px; }
+        .back { margin-top:10px; font-size:12px; }
+        @media print {
+            button { display:none; }
+            .toc { page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+<h1 id="top">Chapter 7: Constructors in a Class</h1>
+<button onclick="window.print()">Print</button>
+
+<div class="toc">
+    <h2>Question Index</h2>
+    <ol id="questionIndex"></ol>
+</div>
+
+<div id="content"></div>
+
+<script>
+    const data = []; // Paste JSON array here
+
+    const content = document.getElementById('content');
+    const index = document.getElementById('questionIndex');
+
+    data.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#q-${item.id}">${item.question}</a>`;
+        index.appendChild(li);
+
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.id = `q-${item.id}`;
+
+        div.innerHTML = `
+    <div class="meta">
+      ID: ${item.id} |
+      <span class="badge">${item.difficulty}</span>
+    </div>
+    <div class="question">Q${item.id}. ${item.question}</div>
+    <div class="answer"><strong>Answer:</strong><br>${item.answer || ''}</div>
+    <div class="explanation"><strong>Explanation:</strong><br>${item.explanation || ''}</div>
+    <div class="back"><a href="#top">Back to Index</a></div>
+  `;
+
+        content.appendChild(div);
+    });
+</script>
+</body>
+</html>

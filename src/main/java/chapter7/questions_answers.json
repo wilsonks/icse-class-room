@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "difficulty":  "easy",
+    "question": "Write two advantages of using methods in programming.",
+    "answer": "1) Code Reusability: Methods allow you to write a block of code once and reuse it multiple times throughout your program. This promotes code efficiency and reduces redundancy, as you can call the same method whenever you need to perform the same task, rather than writing the same code multiple times. 2) Improved Readability and Maintainability: Methods help to break down complex problems into smaller, more manageable pieces. This makes the code easier to read and understand, as each method can be designed to perform a specific task. Additionally, if you need to make changes to a particular functionality, you can simply modify the relevant method without affecting the rest of the code, which enhances maintainability and reduces the likelihood of introducing bugs when making changes.",
+    "explanation": "Using methods in programming offers several advantages. Code reusability allows developers to write a piece of code once and use it multiple times, which can save time and effort. For example, if you have a method that calculates the area of a circle, you can call that method whenever you need to calculate the area of a circle, rather than writing the same code each time. Improved readability and maintainability are also significant benefits of using methods. By breaking down a program into smaller methods, you can make the code more organized and easier to understand. Each method can be designed to perform a specific task, which can help other developers (or your future self) to quickly grasp the purpose of each method and how it fits into the overall program. Additionally, if you need to make changes to a specific functionality, you can modify the relevant method without affecting the rest of the code, which can help to prevent bugs and make the code easier to maintain over time."
+  }
+]
