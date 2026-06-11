@@ -107,255 +107,242 @@
 
     const classes = [
         {
-            packageName: "java.lang.String",
-            className: "StringReversalExample",
-            description: "String Reversal Recursively",
+            packageName: "Constructor",
+            className: "DefaultConstructorExample",
+            description: "Default Constructor Provided by compiler",
             sourceCode: `
-                public class StringReversalExample {
-
-                    public static String reverseString(String str) {
-                        if (str.isEmpty()) {
-                            return str;
-                        }
-                        return reverseString(str.substring(1)) + str.charAt(0);
+                public class DefaultConstructorExample {
+                
+                    private String name;
+                    private int age;
+                
+                    public String getName() {
+                        return name;
                     }
-
+                
+                    public int getAge() {
+                        return age;
+                    }
+                
                     public static void main(String[] args) {
-                        String original = "Hello, World!";
-                        String reversed = reverseString(original);
-                        System.out.println("Original: " + original);
-                        System.out.println("Reversed: " + reversed);
-                    }
-                }
-            `,
-        },
-        {
-            packageName: "java.lang.String",
-            className: "StringPalindromeCheckExample",
-            description: "String Palindrome Recursively",
-            sourceCode: `
-                public class StringPalindromeCheckExample {
-
-                    public static boolean isPalindrome(String str) {
-                        if (str.length() <= 1) {
-                            return true;
-                        }
-                        if (str.charAt(0) != str.charAt(str.length() - 1)) {
-                            return false;
-                        }
-                        return isPalindrome(str.substring(1, str.length() - 1));
-                    }
-
-                    public static void main(String[] args) {
-                        String testString = "madam";
-                        boolean result = isPalindrome(testString);
-                        System.out.println("Is \"" + testString + "\" a palindrome? " + result);
+                        DefaultConstructorExample example = new DefaultConstructorExample();
+                        System.out.println("Name: " + example.getName());
+                        System.out.println("Age: " + example.getAge());
                     }
                 }
             `
         },
         {
-            packageName: "java.lang.String",
-            className: "MathematicalFibonacciExample",
-            description: "String Fibonacci Recursively",
+            packageName: "Constructor",
+            className: "ParameterisedConstructorExample",
+            description: "Developer wrote a parameterised constructor method, so default constructor is not provided by compiler",
             sourceCode: `
-                public class MathematicalFibonacciExample {
+                public class ParameterisedConstructorExample {
 
-                    public static int fibonacci(int n) {
-                        if (n <= 1) {
-                            return n;
-                        }
-                        return fibonacci(n - 1) + fibonacci(n - 2);
+                    private String name;
+                    private int age;
+
+                    public ParameterisedConstructorExample(String name, int age) {
+                        this.name = name;
+                        this.age = age;
+                    }
+
+                    public String getName() {
+                        return name;
+                    }
+
+                    public int getAge() {
+                        return age;
                     }
 
                     public static void main(String[] args) {
-                        int n = 10; // Change this value to compute Fibonacci for different n
-                        System.out.println("Fibonacci of " + n + " is: " + fibonacci(n));
+                        ParameterisedConstructorExample example = new ParameterisedConstructorExample("Alice", 30);
+                        System.out.println("Name: " + example.getName());
+                        System.out.println("Age: " + example.getAge());
                     }
                 }
             `
         },
         {
-            packageName: "java.lang.String",
-            className: "MathematicalFactorial",
-            description: "String Factorial Recursively",
+            packageName: "Constructor",
+            className: "ConstructorOverloadingExample",
+            description: "Multiple constructors (overloaded) in a class ",
             sourceCode: `
-                public class MathematicalFactorial {
+                public class ConstructorOverloadingExample {
 
-                    public static int factorial(int n) {
-                        if (n == 0 || n == 1) {
-                            return 1;
-                        }
-                        return n * factorial(n - 1);
+                    private String name;
+                    private int age;
+
+                    // Default constructor
+                    public ConstructorOverloadingExample() {
+                        this.name = "Unknown";
+                        this.age = 0;
+                    }
+
+                    // Parameterized constructor
+                    public ConstructorOverloadingExample(String name, int age) {
+                        this.name = name;
+                        this.age = age;
+                    }
+
+                    public String getName() {
+                        return name;
+                    }
+
+                    public int getAge() {
+                        return age;
                     }
 
                     public static void main(String[] args) {
-                        int n = 5; // Change this value to compute factorial for different n
-                        System.out.println("Factorial of " + n + " is: " + factorial(n));
-                    }
-                }
-            `
-        },
-        {
-            packageName: "java.lang.int",
-            className: "NumberAutoMorphicCheck",
-            description: "NumberAutoMorphicCheck Recursively",
-            sourceCode: `
-                public class NumberAutoMorphicCheck {
+                        ConstructorOverloadingExample defaultExample = new ConstructorOverloadingExample();
+                        System.out.println("Default Constructor - Name: " + defaultExample.getName() + ", Age: " + defaultExample.getAge());
 
-                    public static boolean isAutomorphic(int number) {
-                        int square = number * number;
-                        String numStr = Integer.toString(number); // Convert the number to a string to check its digits
-                        String squareStr = Integer.toString(square); // Convert the square to a string to check its digits
-                        return squareStr.endsWith(numStr); //Check it's square ends with
-                    }
-
-                    public static void main(String[] args) {
-                        int testNumber = 25; // Change this value to test different numbers
-                        boolean result = isAutomorphic(testNumber);
-                        System.out.println("Is " + testNumber + " an automorphic number? " + result);
-                    }
-                }
-
-            `
-        },
-        {
-            packageName: "java.lang.int",
-            className: "NumberIsPrimeCheck",
-            description: "Number Prime Recursively",
-            sourceCode: `
-                public class NumberIsPrimeCheck {
-
-                    public static boolean isPrime(int number) {
-                        if (number <= 1) {
-                            return false; // 0 and 1 are not prime numbers
-                        }
-                        for (int i = 2; i <= Math.sqrt(number); i++) {
-                            if (number % i == 0) {
-                                return false; // Found a divisor, not prime
-                            }
-                        }
-                        return true; // No divisors found, it's prime
-                    }
-
-                    public static void main(String[] args) {
-                        int testNumber = 29; // Change this value to test different numbers
-                        boolean result = isPrime(testNumber);
-                        System.out.println("Is " + testNumber + " a prime number? " + result);
-                    }
-                }
-            `
-        },
-        {
-            packageName: "java.lang.String",
-            className: "StringDisplayVowels",
-            description: "String Display Vowels",
-            sourceCode: `
-                public class StringDisplayVowels {
-
-                    public static void displayVowels(String str) {
-                        System.out.println("Vowels in the string: ");
-                        for (char ch : str.toCharArray()) {
-                            if (isVowel(ch)) {
-                                System.out.print(ch + " ");
-                            }
-                        }
-                        System.out.println(); // Print a new line after displaying vowels
-                    }
-
-                    private static boolean isVowel(char ch) {
-                        ch = Character.toLowerCase(ch);
-                        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
-                    }
-
-                    public static void main(String[] args) {
-                        String inputString = "Hello, World!";
-                        displayVowels(inputString);
+                        ConstructorOverloadingExample parameterizedExample = new ConstructorOverloadingExample("Alice", 30);
+                        System.out.println("Parameterized Constructor - Name: " + parameterizedExample.getName() + ", Age: " + parameterizedExample.getAge());
                     }
                 }
             `
         },
         {
             packageName: "java.lang.int",
-            className: "NumberBuzzNumberCheck",
-            description: "String Reversal Recursively",
+            className: "CopyConstructorExample",
+            description: "Copy Constructor Usage",
             sourceCode: `
-                public class NumberBuzzNumberCheck {
+                public class CopyConstructorExample {
 
-                    public static void checkNumber(int number) {
-                        if (number % 3 == 0 && number % 5 == 0) {
-                            System.out.println("FizzBuzz");
-                        } else if (number % 3 == 0) {
-                            System.out.println("Fizz");
-                        } else if (number % 5 == 0) {
-                            System.out.println("Buzz");
+                    private String name;
+                    private int age;
+
+                    // Copy constructor
+                    public CopyConstructorExample(CopyConstructorExample other) {
+                        this.name = other.name;
+                        this.age = other.age;
+                    }
+
+                    public CopyConstructorExample(String name, int age) {
+                        this.name = name;
+                        this.age = age;
+                    }
+
+                    public String getName() {
+                        return name;
+                    }
+
+                    public int getAge() {
+                        return age;
+                    }
+
+                    public static void main(String[] args) {
+                        CopyConstructorExample original = new CopyConstructorExample("Alice", 30);
+                        CopyConstructorExample copy = new CopyConstructorExample(original);
+
+                        System.out.println("Original - Name: " + original.getName() + ", Age: " + original.getAge());
+                        System.out.println("Copy - Name: " + copy.getName() + ", Age: " + copy.getAge());
+                    }
+                }
+            `
+        },
+        {
+            packageName: "java.lang.String",
+            className: "PiglatinFormOfAWord",
+            description: "Convert a word to it's piglatin",
+            sourceCode: `
+                public class PiglatinFormOfAWord {
+
+                    public static String piglatin(String word) {
+                        if (word == null || word.isEmpty()) {
+                            return word; // Return the original word if it's null or empty
+                        }
+
+                        char firstLetter = Character.toLowerCase(word.charAt(0));
+                        String restOfWord = word.substring(1);
+
+                        if (isVowel(firstLetter)) {
+                            return word + "yay"; // If the first letter is a vowel, add "yay" to the end
                         } else {
-                            System.out.println(number);
+                            return restOfWord + firstLetter + "ay"; // Move the first letter to the end and add "ay"
+                        }
+                    }
+
+                    private static boolean isVowel(char letter) {
+                        return "aeiou".indexOf(letter) != -1; // Check if the letter is a vowel
+                    }
+
+                    public static void main(String[] args) {
+                        String word1 = "hello";
+                        String word2 = "apple";
+                        String word3 = "string";
+
+                        System.out.println("Pig Latin of '" + word1 + "' is: " + piglatin(word1)); //ellohay
+                        System.out.println("Pig Latin of '" + word2 + "' is: " + piglatin(word2)); //appleyay
+                        System.out.println("Pig Latin of '" + word3 + "' is: " + piglatin(word3)); //tringsay
+                    }
+                }
+
+            `
+        },
+        {
+            packageName: "Constructor",
+            className: "ShallowCopyDeepCopyExample",
+            description: "Shallow copy vs deep copy",
+            sourceCode: `
+                public class ShallowCopyDeepCopyExample {
+
+                    public static class Person{
+                        private String name;
+                        private int age;
+
+                        public Person(String name, int age) {
+                            this.name = name;
+                            this.age = age;
+                        }
+
+                        public String getName() {
+                            return name;
+                        }
+
+                        public void setName(String name) {
+                            this.name = name;
+                        }
+
+                        public int getAge() {
+                            return age;
+                        }
+
+                        public void setAge(int age) {
+                            this.age = age;
+                        }
+
+                        @Override
+                        public String toString() {
+                            return "Person{name='" + name + "', age=" + age + "}";
                         }
                     }
 
                     public static void main(String[] args) {
-                        int numberToCheck = 15; // Change this value to check different numbers
-                        checkNumber(numberToCheck);
-                    }
-                }
-            `
-        },
-        {
-            packageName: "java.lang.int",
-            className: "NumberFrequencyOfADigit",
-            description: "Count Digit Frequency in a Number",
-            sourceCode: `
-                public class NumberFrequencyOfADigit {
+                        // Shallow Copy Example
+                        Person originalPerson = new Person("Alice", 30);
+                        Person shallowCopyPerson = originalPerson; // This creates a shallow copy (reference copy)
 
-                    public static int countDigitFrequency(int number, int digit) {
-                        int count = 0;
-                        while (number > 0) {
-                            int lastDigit = number % 10; // Get the last digit
-                            if (lastDigit == digit) {
-                                count++;
-                            }
-                            number /= 10; // Remove the last digit
-                        }
-                        return count;
-                    }
+                        System.out.println("Original Person: " + originalPerson);
+                        System.out.println("Shallow Copy Person: " + shallowCopyPerson);
 
-                    public static void main(String[] args) {
-                        int number = 1234567890; // Change this value to check different numbers
-                        int digitToCount = 1; // Change this value to count different digits
-                        int frequency = countDigitFrequency(number, digitToCount);
-                        System.out.println("The digit " + digitToCount + " appears " + frequency + " times in the number " + number);
-                    }
-                }
-            `
-        },
-        {
-            packageName: "java.lang",
-            className: "PureMethodExample",
-            description: "Pure and Impure method example",
-            sourceCode: `
-                public class PureMethodExample {
+                        // Modifying the shallow copy will affect the original
+                        shallowCopyPerson.setName("Bob");
+                        System.out.println("\nAfter modifying shallow copy:");
+                        System.out.println("Original Person: " + originalPerson);
+                        System.out.println("Shallow Copy Person: " + shallowCopyPerson);
 
-                    // Pure method: It always produces the same output for the same input and has no side effects.
-                    public static int add(int a, int b) {
-                        return a + b;
-                    }
+                        // Deep Copy Example
+                        Person deepCopyPerson = new Person(originalPerson.getName(), originalPerson.getAge()); // This creates a deep copy
 
-                    // Impure method: It may produce different outputs for the same input or has side effects.
-                    public static void printCurrentTime() {
-                        System.out.println("Current time: " + System.currentTimeMillis());
-                    }
+                        System.out.println("\nDeep Copy Person: " + deepCopyPerson);
 
-                    public static void main(String[] args) {
-                        // Testing the pure method
-                        int result1 = add(5, 10);
-                        int result2 = add(5, 10);
-                        System.out.println("Result of add(5, 10): " + result1); // Always 15
-                        System.out.println("Result of add(5, 10): " + result2); // Always 15
-
-                        // Testing the impure method
-                        printCurrentTime(); // Will print different times each time it's called
-                        printCurrentTime(); // Will print different times each time it's called
+                        // Modifying the deep copy will NOT affect the original
+                        deepCopyPerson.setName("Charlie");
+                        System.out.println("\nAfter modifying deep copy:");
+                        System.out.println("Original Person: " + originalPerson);
+                        System.out.println("Deep Copy Person: " + deepCopyPerson);
                     }
                 }
             `

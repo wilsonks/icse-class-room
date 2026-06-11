@@ -48,7 +48,134 @@
 <div id="content"></div>
 
 <script>
-    const data = []; // Paste JSON array here
+    const data = [
+        {
+            "id": 1,
+            "difficulty":  "easy",
+            "question": "Need of using a Constructor in Java?",
+            "answer": "A constructor in Java is a special method that is used to initialize objects. It is called when an instance of a class is created and allows you to set initial values for the object's attributes. Constructors help ensure that an object is in a valid state when it is created and can also be used to perform any necessary setup or initialization tasks. They provide a convenient way to create and initialize objects in a single step, improving code readability and maintainability.",
+            "explanation": "Constructors are essential for creating objects in Java. They allow you to set initial values for the object's attributes and perform any necessary setup or initialization tasks. By using constructors, you can ensure that your objects are in a valid state when they are created, which can help prevent errors and improve the overall reliability of your code."
+        },
+        {
+            "id": 2,
+            "difficulty":  "medium",
+            "question": "What is the difference between a Constructor and a Method in Java?",
+            "answer": "A constructor is a special method that is used to initialize objects, while a method is a regular function that performs a specific task. The main differences between constructors and methods are: \n1. Name: A constructor must have the same name as the class, while a method can have any name. \n2. Return Type: A constructor does not have a return type, while a method must have a return type (or void if it does not return anything). \n3. Purpose: A constructor is used to create and initialize objects, while a method is used to perform specific actions or operations on objects.",
+            "explanation": "Constructors and methods serve different purposes in Java. Constructors are specifically designed for creating and initializing objects, while methods are used to perform specific tasks or operations on those objects. Understanding the differences between constructors and methods is important for writing effective and efficient Java code."
+        },
+        {
+            "id": 3,
+            "difficulty":  "hard",
+            "question": "Can a Constructor be Overloaded in Java? If yes, how does it work?",
+            "answer": "Yes, a constructor can be overloaded in Java. Constructor overloading is the process of defining multiple constructors with different parameter lists within the same class. This allows you to create objects in different ways, depending on the parameters you provide. When you create an object using a constructor, Java will determine which constructor to call based on the number and types of arguments you pass. This provides flexibility in object creation and allows you to initialize objects with different sets of data.",
+            "explanation": "Constructor overloading is a powerful feature in Java that allows you to create objects in various ways. By defining multiple constructors with different parameter lists, you can provide different options for initializing your objects. This can make your code more flexible and easier to use, as it allows you to create objects with different sets of data without having to write separate methods for each case."
+        },
+        {
+            "id": 4,
+            "difficulty":  "medium",
+            "question": "What is the role of the 'this' keyword in a Constructor?",
+            "answer": "The 'this' keyword in a constructor is used to refer to the current instance of the class. It is often used to differentiate between instance variables and parameters when they have the same name. For example, if you have an instance variable named 'name' and a parameter named 'name' in the constructor, you can use 'this.name' to refer to the instance variable and 'name' to refer to the parameter. This helps avoid confusion and ensures that you are assigning values to the correct variables.",
+            "explanation": "The 'this' keyword is an important part of constructors in Java. It allows you to refer to the current instance of the class and helps differentiate between instance variables and parameters. By using 'this', you can ensure that you are assigning values to the correct variables and avoid any potential confusion that may arise from having variables with the same name."
+        },
+        {
+            "id": 5,
+            "difficulty":  "easy",
+            "question": "Can a Constructor call another Constructor in the same class? If yes, how is it done?",
+            "answer": "Yes, a constructor can call another constructor in the same class using the 'this()' syntax. This is known as constructor chaining. When you use 'this()', it must be the first statement in the constructor. This allows you to reuse code and avoid duplication when initializing objects with different sets of parameters.",
+            "explanation": "Constructor chaining is a useful technique in Java that allows you to call one constructor from another within the same class. By using 'this()', you can reuse code and avoid duplication when initializing objects with different sets of parameters. This can make your code more efficient and easier to maintain."
+        },
+        {
+            "id": 6,
+            "difficulty":  "hard",
+            "question": "What happens if you do not define a Constructor in a Java class?",
+            "answer": "If you do not define a constructor in a Java class, the compiler will automatically provide a default constructor. This default constructor is a no-argument constructor that initializes the object with default values (e.g., null for objects, 0 for numeric types, false for boolean). However, if you define any constructor (with or without parameters), the default constructor will not be provided, and you will need to explicitly define it if you want to use it.",
+            "explanation": "The default constructor is provided by the compiler when no constructors are defined in a class. It allows you to create objects without having to specify any parameters. However, if you define any constructor, the default constructor will not be available, and you will need to define it yourself if you want to use it. This is important to keep in mind when designing your classes and constructors."
+        },
+        {
+            "id": 7,
+            "difficulty":  "medium",
+            "question": "Can a Constructor be declared as private in Java? If yes, what is the purpose of doing so?",
+            "answer": "Yes, a constructor can be declared as private in Java. The purpose of declaring a constructor as private is to prevent the creation of objects from outside the class. This is often used in design patterns such as the Singleton pattern, where you want to ensure that only one instance of a class is created and provide a global point of access to that instance.",
+            "explanation": "Declaring a constructor as private is a common technique used in certain design patterns to control object creation. By making the constructor private, you can prevent other classes from creating instances of the class directly, which can help enforce certain constraints or ensure that only one instance of the class exists."
+        },
+        {
+            "id": 8,
+            "difficulty":  "easy",
+            "question": "Can a Constructor be inherited in Java? If no, why?",
+            "answer": "No, a constructor cannot be inherited in Java. Constructors are not members of a class and are not inherited by subclasses. Each class must define its own constructors, and they do not get inherited from the parent class. This is because constructors are specific to the class they belong to and are responsible for initializing objects of that class. If constructors were inherited, it could lead to confusion and errors when trying to create instances of subclasses.",
+            "explanation": "Constructors are unique to each class and are not inherited by subclasses. This design choice helps maintain the integrity of object initialization and ensures that each class can define its own way of creating and initializing objects without being constrained by the constructors of its parent class."
+        },
+        {
+            "id": 9,
+            "difficulty":  "medium",
+            "question": "What is the difference between a Default Constructor and a Parameterized Constructor in Java?",
+            "answer": "A Default Constructor is a no-argument constructor that is automatically provided by the compiler if no constructors are defined in a class. It initializes the object with default values. A Parameterized Constructor, on the other hand, is a constructor that takes parameters and allows you to initialize the object with specific values at the time of creation. The main difference is that a Default Constructor does not take any parameters and initializes the object with default values, while a Parameterized Constructor allows you to set specific values for the object's attributes.",
+            "explanation": "The Default Constructor and Parameterized Constructor serve different purposes in Java. The Default Constructor provides a way to create objects without specifying any initial values, while the Parameterized Constructor allows you to create objects with specific initial values. Understanding the differences between these two types of constructors is important for effectively designing and initializing your classes."
+        },
+        {
+            "id": 10,
+            "difficulty":  "easy",
+            "question": "How to invoke a Constructor?",
+            "answer": "To invoke a constructor in Java, you can use the 'new' keyword followed by the class name and parentheses. For example, if you have a class named 'Person' with a constructor that takes a String parameter for the person's name, you can create an instance of the Person class like this: 'Person person = new Person(\"John\");'. This will call the constructor of the Person class and initialize the object with the name 'John'.",
+            "explanation": "Invoking a constructor in Java is straightforward. You use the 'new' keyword followed by the class name and parentheses to create an instance of the class. This will call the appropriate constructor based on the parameters you provide, allowing you to initialize the object with specific values. Understanding how to invoke constructors is essential for creating and working with objects in Java."
+        },
+        {
+            "id": 11,
+            "difficulty":  "medium",
+            "question": "Features of Constructor in Java?",
+            "answer": "The features of a constructor in Java include: \n1. It has the same name as the class. \n2. It does not have a return type, not even void. \n3. It is called automatically when an object is created. \n4. It can be overloaded, meaning you can have multiple constructors with different parameter lists. \n5. It can call another constructor in the same class using 'this()' syntax (constructor chaining). \n6. If no constructor is defined, the compiler provides a default constructor. \n7. It is used to initialize objects and set initial values for the object's attributes.",
+            "explanation": "Constructors in Java have specific features that distinguish them from regular methods. They are designed to initialize objects and have certain characteristics, such as having the same name as the class and not having a return type. Understanding these features is important for effectively using constructors in your Java programs and ensuring that your objects are properly initialized."
+        },
+        {
+            "id": 12,
+            "difficulty":  "easy",
+            "question": "Types of Constructor in Java?",
+            "answer": "There are three types of constructors in Java: \n1. Default Constructor: A constructor that takes no arguments and is automatically provided by the compiler if no constructors are defined in the class. It initializes the object with default values. \n2. Parameterized Constructor: A constructor that takes parameters and allows you to initialize the object with specific values at the time of creation. \n3. Copy Constructor: A constructor that creates a new object as a copy of an existing object. It takes an object of the same class as a parameter and initializes the new object with the values of the existing object.",
+            "explanation": "In Java, there are different types of constructors that serve various purposes. The Default Constructor is provided by the compiler when no constructors are defined, while the Parameterized Constructor allows you to initialize objects with specific values. The Copy Constructor is used to create a new object as a copy of an existing object. Understanding the different types of constructors can help you design your classes and initialize your objects effectively."
+        },
+        {
+            "id": 13,
+            "difficulty":  "medium",
+            "question": "Can a Constructor be static in Java? If no, why?",
+            "answer": "No, a constructor cannot be static in Java. This is because constructors are meant to initialize instances of a class, and static members belong to the class itself rather than any particular instance. A static constructor would not make sense because it would not be able to access instance variables or initialize objects. Additionally, static methods cannot be called on instances of a class, which is a fundamental requirement for constructors. Therefore, constructors must be non-static to fulfill their purpose of initializing objects.",
+            "explanation": "Constructors are designed to initialize objects, and they need to access instance variables to do so. Since static members belong to the class rather than any specific instance, a static constructor would not be able to perform its intended function. This is why constructors cannot be declared as static in Java."
+        },
+        {
+            "id": 14,
+            "difficulty":  "hard",
+            "question": "Types of Copy Constructor in Java?",
+            "answer": "In Java, there are two types of copy constructors: \n1. Shallow Copy Constructor: This type of copy constructor creates a new object and copies the values of the instance variables from the existing object to the new object. However, if the instance variables are references to objects, only the references are copied, not the actual objects. This means that both the original object and the new object will refer to the same objects in memory, which can lead to unintended side effects if one of the objects is modified. \n2. Deep Copy Constructor: This type of copy constructor creates a new object and copies the values of the instance variables from the existing object to the new object. If the instance variables are references to objects, the deep copy constructor creates new instances of those objects and copies their values as well. This means that the original object and the new object will refer to different objects in memory, and modifications to one object will not affect the other.",
+            "explanation": "The copy constructor is a special type of constructor that creates a new object as a copy of an existing object. The shallow copy constructor copies the values of the instance variables, but if those variables are references to objects, it only copies the references, which can lead to unintended consequences. The deep copy constructor, on the other hand, creates new instances of the referenced objects, ensuring that the original and new objects are completely independent of each other. Understanding the differences between shallow and deep copy constructors is important for managing object copying and avoiding unintended side effects in your Java programs."
+        },
+        {
+            "id": 15,
+            "difficulty":  "easy",
+            "question": "Which unit of the class gets called when the object of the class is created?",
+            "answer": "When an object of a class is created, the constructor of the class gets called. The constructor is a special method that is automatically invoked when an instance of the class is created. It is responsible for initializing the object and setting up any necessary resources or values. The constructor can take parameters to allow for different ways of initializing the object, and it can also call other constructors within the same class using constructor chaining.",
+            "explanation": "The constructor is the unit of the class that gets called when an object of the class is created. It plays a crucial role in initializing the object and ensuring that it is in a valid state when it is created. Understanding how constructors work and how they are invoked is essential for effectively creating and managing objects in Java."
+        },
+        {
+            "id": 16,
+            "difficulty":  "medium",
+            "question": "Can a Constructor be final in Java? If no, why?",
+            "answer": "No, a constructor cannot be declared as final in Java. This is because constructors are not inherited by subclasses, and the concept of final is primarily used to prevent method overriding in subclasses. Since constructors are specific to the class they belong to and are not inherited, there is no need for them to be declared as final. Additionally, declaring a constructor as final would not make sense because it would not allow for any flexibility in object initialization, which is one of the primary purposes of constructors.",
+            "explanation": "Constructors are designed to initialize objects and are specific to the class they belong to. Since they are not inherited by subclasses, there is no need for them to be declared as final. The final keyword is used to prevent method overriding, but since constructors cannot be overridden, it does not apply to them. Therefore, constructors cannot be declared as final in Java."
+        },
+        {
+            "id": 17,
+            "difficulty":  "easy",
+            "question": "What is a Constructor in Java? When is it invoked?",
+            "answer": "A constructor in Java is a special method that is used to initialize objects. It has the same name as the class and does not have a return type. A constructor is invoked automatically when an instance of a class is created using the 'new' keyword. The constructor is responsible for setting up the initial state of the object and can take parameters to allow for different ways of initializing the object. If no constructor is defined in a class, the compiler provides a default constructor that initializes the object with default values.",
+            "explanation": "Constructors are essential for creating and initializing objects in Java. They are automatically called when an object is created, and they allow you to set up the initial state of the object. Understanding what a constructor is and when it is invoked is crucial for effectively working with classes and objects in Java. Constructors provide a convenient way to create and initialize objects in a single step, improving code readability and maintainability."
+        },
+        {
+            "id": 18,
+            "difficulty": "medium",
+            "question": "Why do we need a Constructor in Java?",
+            "answer": "We need a constructor in Java to initialize objects when they are created. A constructor allows us to set initial values for the object's attributes and perform any necessary setup or initialization tasks. Without a constructor, we would have to manually set the values of the object's attributes after creating it, which can lead to errors and make the code less efficient. Constructors provide a convenient way to create and initialize objects in a single step, ensuring that the object is in a valid state when it is created. They also improve code readability and maintainability by encapsulating the initialization logic within the class itself.",
+            "explanation": "Constructors are essential for creating and initializing objects in Java. They allow us to set initial values for the object's attributes and perform any necessary setup or initialization tasks. By using constructors, we can ensure that our objects are in a valid state when they are created, which can help prevent errors and improve the overall reliability of our code. Constructors provide a convenient way to create and initialize objects in a single step, making our code more efficient and easier to read."
+        }
+    ]; // Paste JSON array here
 
     const content = document.getElementById('content');
     const index = document.getElementById('questionIndex');
