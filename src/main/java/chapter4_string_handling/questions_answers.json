@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "difficulty":  "easy",
+    "question": "String class data members are?",
+    "answer": "A String class has 3 data members: a final byte array to hold the characters of the string, an final bye to hold the coding (utf16) of the string, and an int to hold the hash code of the string.",
+    "explanation": "The String class in Java has three data members: a final byte array to hold the characters of the string, a final byte to hold the coding (UTF-16) of the string, and an int to hold the hash code of the string. The byte array is used to store the actual characters of the string, while the byte is used to indicate the encoding of the string (UTF-16 in this case). The int is used to store the hash code of the string, which is calculated based on the characters in the string and is used for efficient storage and retrieval in hash-based collections."
+  },
+  {
+    "id": 2,
+    "difficulty":  "easy",
+    "question": "What is String in Java?",
+    "answer": "A String in Java is a sequence of characters. It is an object that represents a sequence of characters and is used to store and manipulate text data.",
+    "explanation": "In Java, a String is a class that represents a sequence of characters. It is an immutable object, meaning that once a String is created, it cannot be changed. Strings are used to store and manipulate text data in Java. They can be created using string literals (enclosed in double quotes) or by using the String class constructor. The String class provides various methods for manipulating strings, such as concatenation, substring extraction, and searching for characters or substrings.",
+    "codeExample": "String str1 = \"Hello\";\nString str2 = new String(\"World\");\nString str3 = str1 + \" \" + str2;\nSystem.out.println(str3); // Output: Hello World"
+  }
+]

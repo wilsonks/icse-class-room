@@ -1,0 +1,85 @@
+<!--
+  ~ /**
+  ~  Copyright (c) 2026 Wilson K Sam
+  ~
+  ~  SPDX-License-Identifier: MIT
+  ~
+  ~  Chapter : Chapter 6 - Class as the Basis of all Computations
+  ~  Purpose:
+  ~  Notes:
+  ~    -
+  ~  */
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Interview Questions Handbook</title>
+    <style>
+        body{font-family:Arial,sans-serif;margin:20px;line-height:1.6}
+        h1,h2{text-align:center}
+        .toc{border:1px solid #ccc;border-radius:8px;padding:15px;margin-bottom:25px}
+        .card{border:1px solid #ccc;border-radius:8px;padding:15px;margin-bottom:20px;page-break-inside:avoid}
+        .meta{color:#666;font-size:12px}
+        .badge{border:1px solid #777;border-radius:12px;padding:2px 8px}
+        .question{font-size:18px;font-weight:bold;margin-top:8px}
+        .answer,.explanation,.code-section{margin-top:12px}
+        pre{background:#f8f8f8;border:1px solid #ddd;border-left:4px solid #666;padding:12px;white-space:pre-wrap;overflow-x:auto}
+        @media print{button{display:none}.toc{page-break-after:always}}
+    </style>
+</head>
+<body>
+<h1 id="top">Java Interview Questions Handbook</h1>
+<button onclick="window.print()">Print / Save as PDF</button>
+
+<div class="toc">
+    <h2>Question Index</h2>
+    <ol id="questionIndex"></ol>
+</div>
+
+<div id="content"></div>
+
+<script>
+    const data = [
+        {
+        "id": 1,
+        "difficulty": "easy",
+        "question": "String Pool Example",
+        "answer": "Strings are immutable...",
+        "explanation": "String literals are stored in the String Pool.",
+        "codeExample": "public class StringDataMember {\n    public static void main(String[] args) {\n        String str1 = \"Hello, World!\";\n        String str2 = \"Hello, World!\";\n\n        // Comparing string literals\n        System.out.println(\"Comparing string literals:\");\n        System.out.println(\"str1 == str2: \" + (str1 == str2)); // true, because string literals are interned\n        System.out.println(\"str1.equals(str2): \" + str1.equals(str2)); // true\n\n        // Creating strings using the new keyword\n        String str3 = new String(\"Hello, World!\");\n        String str4 = new String(\"Hello, World!\");\n\n        // Comparing strings created with new\n        System.out.println(\"\\nComparing strings created with new:\");\n        System.out.println(\"str3 == str4: \" + (str3 == str4)); // false, because they are different objects\n        System.out.println(\"str3.equals(str4): \" + str3.equals(str4)); // true\n    }\n}"
+        }
+    ]; // Paste your JSON array here
+
+    const content=document.getElementById('content');
+    const index=document.getElementById('questionIndex');
+
+    function escapeHtml(text){
+        if(!text) return '';
+        return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    data.forEach(item=>{
+        const li=document.createElement('li');
+        li.innerHTML='<a href="#q-'+item.id+'">'+item.question+'</a>';
+        index.appendChild(li);
+
+        const codeBlock=item.codeExample ?
+            '<div class="code-section"><strong>Code Example:</strong><pre><code>'+
+            escapeHtml(item.codeExample)+
+            '</code></pre></div>' : '';
+
+        const div=document.createElement('div');
+        div.className='card';
+        div.id='q-'+item.id;
+
+        div.innerHTML=' <div class="meta">ID: '+(item.id||'')+' | <span class="badge">'+(item.difficulty||'')+'</span></div> <div class="question">Q'+item.id+'. '+(item.question||'')+'</div> <div class="answer"><strong>Answer:</strong><br>'+(item.answer||'')+'</div> <div class="explanation"><strong>Explanation:</strong><br>'+(item.explanation||'')+'</div> '+codeBlock+' <div style="margin-top:10px"><a href="#top">Back to Index</a></div>';
+
+        content.appendChild(div);
+    });
+</script>
+</body>
+</html>
